@@ -55,7 +55,7 @@
 #
 #### IMPORT SOURCES ##########################################################
 # source("const.R")
-const()
+# const()
 
 
 #### DEFINE FUNCTIONS ########################################################
@@ -175,6 +175,7 @@ dcos <- function(d) {
 #' @return Sine of an angle.
 #' @export
 dsin <- function(d) {
+  const()
   sin(d * pir)
 }
 
