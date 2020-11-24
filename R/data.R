@@ -118,7 +118,7 @@ read_csv <- function(fname, y=-1) {
 #'
 #' Reads plain text file (no header) of one of the input arrays.
 #'
-#' @param my_data List same as the output from \code{\lin{read_csv}}.
+#' @param my_data List same as the output from \code{\link{read_csv}}.
 #' @param fname String, file name.
 #' @param var String, variable name.
 #' @param y Numeric, year.
