@@ -1,10 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# SPLASH: Robust indices of radiation, evapotranspiration and plant-available moisture
+# SPLASH: Simple Process-Led Algorithms for Simulating Habitats
 
 <!-- badges: start -->
 
+[![](https://img.shields.io/badge/devel%20version-1.0.0.9000-yellow.svg)](https://github.com/villegar/splash)
+[![](https://img.shields.io/badge/doi-10.5281/zenodo.376293-blue.svg)](https://doi.org/10.5281/zenodo.376293)
 <!-- badges: end -->
 
 This program calculates bioclimatic indices and fluxes (radiation,
@@ -15,14 +17,18 @@ inputs: latitude, precipitation, air temperature, and cloudiness.
 
 ## Installation
 
-You can install the released version of splash from
-[CRAN](https://CRAN.R-project.org) with:
+<!-- You can install the released version of splash from [CRAN](https://CRAN.R-project.org) with: -->
 
-``` r
-install.packages("splash")
-```
+<!-- ``` r -->
 
-And the development version from [GitHub](https://github.com/) with:
+<!-- install.packages("splash") -->
+
+<!-- ``` -->
+
+<!-- And the development version from [GitHub](https://github.com/) with: -->
+
+You can install the development version from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -35,6 +41,6 @@ T. W. Davis, I. C. Prentice, B. D. Stocker, R. J. Whitley, H. Wang, B.
 J. Evans, A. V. Gallego-Sala, M. T. Sykes, and W. Cramer, *Simple
 process-led algorithms for simulating habitats (SPLASH): Robust indices
 of radiation evapo-transpiration and plant-available moisture*,
-Geoscientific Model Development, 2016 (in progress)
+Geoscientific Model Development, 2016. DOI: 
 
 Source: <https://bitbucket.org/labprentice/splash/>
