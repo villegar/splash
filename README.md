@@ -17,18 +17,16 @@ inputs: latitude, precipitation, air temperature, and cloudiness.
 
 ## Installation
 
-<!-- You can install the released version of splash from [CRAN](https://CRAN.R-project.org) with: -->
+You can install the released version of splash from
+[CRAN](https://CRAN.R-project.org) with:
 
-<!-- ``` r -->
+``` r
+install.packages("splash")
+```
 
-<!-- install.packages("splash") -->
+And the development version from [GitHub](https://github.com/) with:
 
-<!-- ``` -->
-
-<!-- And the development version from [GitHub](https://github.com/) with: -->
-
-You can install the development version from
-[GitHub](https://github.com/) with:
+<!-- You can install the development version from [GitHub](https://github.com/) with: -->
 
 ``` r
 # install.packages("devtools")

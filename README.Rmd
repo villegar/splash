@@ -25,15 +25,15 @@ This program calculates bioclimatic indices and fluxes (radiation, evapotranspir
 
 ## Installation
 
-<!-- You can install the released version of splash from [CRAN](https://CRAN.R-project.org) with: -->
+You can install the released version of splash from [CRAN](https://CRAN.R-project.org) with:
 
-<!-- ``` r -->
-<!-- install.packages("splash") -->
-<!-- ``` -->
+``` r
+install.packages("splash")
+```
 
-<!-- And the development version from [GitHub](https://github.com/) with: -->
+And the development version from [GitHub](https://github.com/) with:
 
-You can install the development version from [GitHub](https://github.com/) with:
+<!-- You can install the development version from [GitHub](https://github.com/) with: -->
 ``` r
 # install.packages("devtools")
 devtools::install_github("villegar/splash")
