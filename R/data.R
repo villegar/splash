@@ -67,6 +67,8 @@
 #' Reads all three daily input variables (sf, tair, and pn)
 #' for a single year from a CSV file that includes a header.
 #'
+#' @importFrom utils read.csv
+#'
 #' @param fname String, file name.
 #' @param y Numeric, year.
 #'
