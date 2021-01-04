@@ -1,11 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# SPLASH: Simple Process-Led Algorithms for Simulating Habitats
+# SPLASH: Simple Process-Led Algorithms for Simulating Habitats <img src="https://raw.githubusercontent.com/villegar/splash/main/inst/images/logo.png" alt="logo" align="right" height=200px/>
 
 <!-- badges: start -->
 
-[![](https://img.shields.io/badge/devel%20version-1.0.0.9000-yellow.svg)](https://github.com/villegar/splash)
+[![](https://img.shields.io/badge/devel%20version-1.0.0-yellow.svg)](https://github.com/villegar/splash)
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.376293-blue.svg)](https://doi.org/10.5281/zenodo.376293)
 <!-- badges: end -->
 
