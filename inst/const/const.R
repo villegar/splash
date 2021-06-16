@@ -73,10 +73,10 @@ kWm <- 150          # soil moisture capacity, mm (Cramer-Prentice, 1988)
 kw <- 0.26          # PET entrainment, (1+kw)*EET (Priestley-Taylor, 1972)
 pir <- pi / 180     # pi in radians
 
-# Paleoclimate variables:
-ke <- 0.01670       # eccentricity of earth's orbit, 2000CE (Berger 1978)
-keps <- 23.44       # obliquity of earth's elliptic, 2000CE (Berger 1978)
-komega <- 283       # lon. of perihelion, degrees, 2000CE (Berger, 1978)
+# # Paleoclimate variables:
+# ke <- 0.01670       # eccentricity of earth's orbit, 2000CE (Berger 1978)
+# keps <- 23.44       # obliquity of earth's elliptic, 2000CE (Berger 1978)
+# komega <- 283       # lon. of perihelion, degrees, 2000CE (Berger, 1978)
 
 # lockBinding("kA", globalenv())
 # lockBinding("kalb_sw", globalenv())
