@@ -74,7 +74,13 @@
 #' Calculate true anomaly and true longitude
 #'
 #' @param n Numeric, day of year.
-#' @param N Numeric, daus in a year.
+#' @param N Numeric, days in a year.
+#' @param ke Numeric, eccentricity of Earth's orbit.
+#'     Default: 0.01670, 2000CE (Berger 1978).
+#' @param keps Numeric, obliquity of Earth's elliptic.
+#'     Default: 23.44, 2000CE (Berger 1978).
+#' @param komega Numeric, longitude of the perihelion, degrees.
+#'     Default: 283, 2000CE (Berger 1978).
 #'
 #' @return True anomaly and true longitude for a given day.
 #' @export
@@ -82,7 +88,7 @@
 #' @references
 #' Berger, A. L. (1978), Long term variations of daily insolation
 #' and quaternary climatic changes, J. Atmos. Sci., 35, 2362-2367.
-berger_tls <- function(n, N) {
+berger_tls <- function(n, N, ke = 0.01670, keps = 23.44, komega = 283) {
   const()
   # Variable substitutes:
   xee <- ke^2
@@ -216,7 +222,16 @@ dsin <- function(d) {
 #           - julian_day() ... date to julian day
 # ************************************************************************
 #' @export
-calc_daily_solar <- function(lat, n, elv=0, y=0, sf=1, tc=23.0) {
+
+calc_daily_solar <- function(lat,
+                             n,
+                             elv = 0,
+                             y = 0,
+                             sf = 1,
+                             tc = 23.0,
+                             ke = 0.01670,
+                             keps = 23.44,
+                             komega = 283) {
   const()
   # ~~~~~~~~~~~~~~~~~~~~~~~~ FUNCTION WARNINGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   if (lat > 90 || lat < -90) {

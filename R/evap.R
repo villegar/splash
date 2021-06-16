@@ -274,7 +274,16 @@ sat_slope <- function(tc) {
 #           - sat_slope() .... slope of sat. pressure temp curve
 # ************************************************************************
 #' @export
-calc_daily_evap <- function(lat, n, elv=0, y=0, sf=1, tc=23.0, sw=1.0) {
+calc_daily_evap <-function(lat,
+                           n,
+                           elv = 0,
+                           y = 0,
+                           sf = 1,
+                           tc = 23.0,
+                           sw = 1.0,
+                           ke = 0.01670,
+                           keps = 23.44,
+                           komega = 283) {
   const()
   # ~~~~~~~~~~~~~~~~~~~~~~~~ FUNCTION WARNINGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   if (lat > 90 || lat < -90) {
@@ -290,7 +299,16 @@ calc_daily_evap <- function(lat, n, elv=0, y=0, sf=1, tc=23.0, sw=1.0) {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 1. Calculate radiation fluxes
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  solar <- calc_daily_solar(lat, n, elv, y, sf, tc)
+
+  solar <- calc_daily_solar(lat = lat,
+                            n = n,
+                            elv = elv,
+                            y = y,
+                            sf = sf,
+                            tc = tc,
+                            ke = ke,
+                            keps = keps,
+                            komega = komega)
   ru <- solar$ru;
   rv <- solar$rv;
   rw <- solar$rw;
