@@ -71,7 +71,7 @@ kR <- 8.31447       # universal gas constant, J/mol/K (Moldover et al., 1988)
 kTo <- 288.15       # base temperature, K (Berberan-Santos et al., 1997)
 kWm <- 150          # soil moisture capacity, mm (Cramer-Prentice, 1988)
 kw <- 0.26          # PET entrainment, (1+kw)*EET (Priestley-Taylor, 1972)
-pir <- pi / 180     # pi in radians
+# pir <- pi / 180     # pi in radians
 
 # # Paleoclimate variables:
 # ke <- 0.01670       # eccentricity of earth's orbit, 2000CE (Berger 1978)
