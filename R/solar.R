@@ -81,6 +81,7 @@
 #'     Default: 23.44, 2000CE (Berger 1978).
 #' @param komega Numeric, longitude of the perihelion, degrees.
 #'     Default: 283, 2000CE (Berger 1978).
+#' @param pir $\pi$ im radians.
 #'
 #' @return True anomaly and true longitude for a given day.
 #' @export
@@ -88,35 +89,34 @@
 #' @references
 #' Berger, A. L. (1978), Long term variations of daily insolation
 #' and quaternary climatic changes, J. Atmos. Sci., 35, 2362-2367.
-berger_tls <- function(n, N, ke = 0.01670, keps = 23.44, komega = 283) {
-  const()
+berger_tls <- function(n, N, ke = 0.01670, keps = 23.44, komega = 283, pir = pi / 180) {
   # Variable substitutes:
-  xee <- ke^2
-  xec <- ke^3
-  xse <- sqrt(1 - ke^2)
+  xee <- ke ^ 2
+  xec <- ke ^ 3
+  xse <- sqrt(1 - ke ^ 2)
 
   # Mean longitude for vernal equinox:
-  xlam <- (ke/2.0 + xec/8.0)*(1 + xse)*sin(komega*pir) -
-    xee/4.0*(0.5 + xse)*sin(2.0*komega*pir) +
-    xec/8.0*(1.0/3.0 + xse)*sin(3.0*komega*pir)
-  xlam <- 2.0*xlam/pir
+  xlam <- (ke / 2.0 + xec / 8.0) * (1 + xse) * sin(komega * pir) -
+    xee / 4.0 * (0.5 + xse) * sin(2.0 * komega * pir) +
+    xec / 8.0 * (1.0 / 3.0 + xse) * sin(3.0 * komega * pir)
+  xlam <- 2.0 * xlam / pir
 
   # Mean longitude for day of year:
-  dlamm <- xlam + (n - 80.0)*(360.0/N)
+  dlamm <- xlam + (n - 80.0) * (360.0 / N)
 
   # Mean anomaly:
   anm <- dlamm - komega
-  ranm <- anm*pir
+  ranm <- anm * pir
 
   # True anomaly (uncorrected):
-  ranv <- ranm + (2.0*ke - xec/4.0)*sin(ranm) +
-    5.0/4.0*xee*sin(2.0*ranm) +
-    13.0/12.0*xec*sin(3.0*ranm)
-  anv <- ranv/pir
+  ranv <- ranm + (2.0 * ke - xec / 4.0) * sin(ranm) +
+    5.0 / 4.0 * xee * sin(2.0 * ranm) +
+    13.0 / 12.0 * xec * sin(3.0 * ranm)
+  anv <- ranv / pir
 
   # True longitude:
   my_tls <- anv + komega
-  if (my_tls < 0){
+  if (my_tls < 0) {
     my_tls <- my_tls + 360
   } else if (my_tls > 360) {
     my_tls <- my_tls - 360
@@ -124,7 +124,7 @@ berger_tls <- function(n, N, ke = 0.01670, keps = 23.44, komega = 283) {
 
   # True anomaly:
   my_nu <- my_tls - komega
-  if (my_nu < 0){
+  if (my_nu < 0) {
     my_nu <- my_nu + 360
   }
   return (c(my_nu, my_tls))
@@ -257,7 +257,7 @@ calc_daily_solar <- function(lat,
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 02. Calculate heliocentric longitudes (nu and lambda), degrees
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  my_helio <- berger_tls(n, kN)
+  my_helio <- berger_tls(n = n, N = kN, ke = ke, keps = keps, komega = komega)
   nu <- my_helio[1]
   lam <- my_helio[2]
   solar$nu_deg <- nu
