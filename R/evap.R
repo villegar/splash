@@ -301,8 +301,8 @@ calc_daily_evap <-function(lat,
                            sw = 1.0,
                            ke = 0.01670,
                            keps = 23.44,
-                           komega = 283) {
-  const()
+                           komega = 283,
+                           kw = 0.26) {
   # ~~~~~~~~~~~~~~~~~~~~~~~~ FUNCTION WARNINGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   if (lat > 90 || lat < -90) {
     stop("Warning: Latitude outside range of validity (-90 to 90)!")
