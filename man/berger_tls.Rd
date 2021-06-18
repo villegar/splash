@@ -4,12 +4,21 @@
 \alias{berger_tls}
 \title{Calculate true anomaly and true longitude}
 \usage{
-berger_tls(n, N)
+berger_tls(n, N, ke = 0.0167, keps = 23.44, komega = 283)
 }
 \arguments{
 \item{n}{Numeric, day of year.}
 
-\item{N}{Numeric, daus in a year.}
+\item{N}{Numeric, days in a year.}
+
+\item{ke}{Numeric, eccentricity of Earth's orbit.
+Default: 0.01670, 2000CE (Berger 1978).}
+
+\item{keps}{Numeric, obliquity of Earth's elliptic.
+Default: 23.44, 2000CE (Berger 1978).}
+
+\item{komega}{Numeric, longitude of the perihelion, degrees.
+Default: 283, 2000CE (Berger 1978).}
 }
 \value{
 True anomaly and true longitude for a given day.
