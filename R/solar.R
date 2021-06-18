@@ -229,8 +229,14 @@ calc_daily_solar <- function(lat,
                              tc = 23.0,
                              ke = 0.01670,
                              keps = 23.44,
-                             komega = 283) {
-  const()
+                             komega = 283,
+                             kalb_sw = 0.17,
+                             kalb_vis = 0.03,
+                             kb = 0.20,
+                             kc = 0.25,
+                             kd = 0.50,
+                             kfFEC = 9.80665,
+                             kGsc = 1360.8) {
   # ~~~~~~~~~~~~~~~~~~~~~~~~ FUNCTION WARNINGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   if (lat > 90 || lat < -90) {
     stop("Warning: Latitude outside range of validity (-90 to 90)!")
@@ -265,9 +271,9 @@ calc_daily_solar <- function(lat,
   # 03. Calculate distance factor (dr), unitless
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Berger et al. (1993)
-  kee <- ke^2
-  rho <- (1 - kee)/(1 + ke*dcos(nu))
-  dr <- (1/rho)^2
+  kee <- ke ^ 2
+  rho <- (1 - kee) / (1 + ke * dcos(nu))
+  dr <- (1 / rho) ^ 2
   solar$rho <- rho
   solar$dr <- dr
 
@@ -275,15 +281,15 @@ calc_daily_solar <- function(lat,
   # 04. Calculate the declination angle (delta), degrees
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Woolf (1968)
-  delta <- asin(dsin(lam)*dsin(keps))
-  delta <- delta/pir
+  delta <- asin(dsin(lam) * dsin(keps))
+  delta <- delta / pir
   solar$delta_deg <- delta
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 05. Calculate variable substitutes (u and v), unitless
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ru <- dsin(delta)*dsin(lat)
-  rv <- dcos(delta)*dcos(lat)
+  ru <- dsin(delta) * dsin(lat)
+  rv <- dcos(delta) * dcos(lat)
   solar$ru <- ru
   solar$rv <- rv
 
@@ -293,10 +299,10 @@ calc_daily_solar <- function(lat,
   # Note: u/v equals tan(delta) * tan(lat)
   if (ru/rv >= 1.0) {
     hs <- 180  # Polar day (no sunset)
-  } else if (ru/rv <= -1.0) {
+  } else if (ru / rv <= -1.0) {
     hs <- 0 # Polar night (no sunrise)
   } else {
-    hs <- acos(-1.0*ru/rv)
+    hs <- acos(-1.0 * ru / rv)
     hs <- hs / pir
   }
   solar$hs_deg <- hs
@@ -305,15 +311,15 @@ calc_daily_solar <- function(lat,
   # 07. Calculate daily extraterrestrial radiation (ra_d), J/m^2
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # ref: Eq. 1.10.3, Duffy & Beckman (1993)
-  ra_d <- (86400/pi)*kGsc*dr*(ru*pir*hs + rv*dsin(hs))
+  ra_d <- (86400 / pi) * kGsc * dr * (ru * pir * hs + rv * dsin(hs))
   solar$ra_j.m2 <- ra_d
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 08. Calculate transmittivity (tau), unitless
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # ref:  Eq. 11, Linacre (1968); Eq. 2, Allen (1996)
-  tau_o <- (kc + kd*sf)
-  tau <- tau_o*(1 + (2.67e-5)*elv)
+  tau_o <- (kc + kd * sf)
+  tau <- tau_o * (1 + (2.67e-5) * elv)
 
   solar$tau_o <- tau_o
   solar$tau <- tau
@@ -321,49 +327,47 @@ calc_daily_solar <- function(lat,
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 09. Calculate daily photosynthetic photon flux density (ppfd_d), mol/m^2
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ppfd_d <- (1e-6)*kfFEC*(1 - kalb_vis)*tau*ra_d
+  ppfd_d <- (1e-6) * kfFEC * (1 - kalb_vis) * tau * ra_d
   solar$ppfd_mol.m2 <- ppfd_d
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 10. Estimate net longwave radiation (rnl), W/m^2
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  rnl <- (kb + (1 - kb)*sf)*(kA - tc)
+  rnl <- (kb + (1 - kb) * sf) * (kA - tc)
   solar$rnl_w.m2 <- rnl
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 11. Calculate variable substitue (rw), W/m^2
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  rw <- (1 - kalb_sw)*tau*kGsc*dr
+  rw <- (1 - kalb_sw) * tau * kGsc * dr
   solar$rw <- rw
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 12. Calculate net radiation cross-over angle (hn), degrees
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  if ((rnl - rw*ru)/(rw*rv) >= 1.0) {
+  if ((rnl - rw * ru)/(rw * rv) >= 1.0) {
     hn <- 0  # Net radiation is negative all day
-  } else if ((rnl - rw*ru)/(rw*rv) <= -1.0) {
+  } else if ((rnl - rw * ru) / (rw * rv) <= -1.0) {
     hn <- 180 # Net radiation is positive all day
   } else {
-    hn <- acos((rnl - rw*ru)/(rw*rv))
-    hn <- hn/pir
+    hn <- acos((rnl - rw * ru) / (rw * rv))
+    hn <- hn / pir
   }
   solar$hn_deg <- hn
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 13. Calculate daytime net radiation (rn_d), J/m^2
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  rn_d <- (86400/pi)*(hn*pir*(rw*ru - rnl) + rw*rv*dsin(hn))
+  rn_d <- (86400 / pi) * (hn * pir * (rw * ru - rnl) + rw * rv * dsin(hn))
   solar$rn_j.m2 <- rn_d
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 14. Calculate nighttime net radiation (rnn_d), J/m^2
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # fixed iss#13
-  rnn_d <- (86400/pi)*(
-    rw*rv*(dsin(hs) - dsin(hn)) +
-      rw*ru*(hs - hn)*pir -
-      rnl*(pi - hn*pir)
-  )
+  rnn_d <- (86400 / pi) * (rw * rv * (dsin(hs) - dsin(hn)) +
+                             rw * ru * (hs - hn) * pir -
+                             rnl * (pi - hn * pir))
   solar$rnn_j.m2 <- rnn_d
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~ RETURN VALUES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
