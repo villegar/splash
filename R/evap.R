@@ -137,10 +137,28 @@ density_h2o <- function(tc, pa) {
 #           - kG ............. gravity, m/s^2
 # Ref:      Allen et al. (1998)
 # ************************************************************************
+#' Elevation to pressure
+#'
+#' Calculates atmospheric pressure for a given elevation
+#'
+#' @param z Elevation, m.
+#' @param kG Gravitational acceleration, m/s^2.
+#'     Default: 9.80665 (Allen, 1973)
+#' @param kL Adiabatic lapse rate, K/m.
+#'     Default: 0.0065 (Cavcar, 2000)
+#' @param kMa Molecular weight of dry air, kg/mol.
+#'     Default: 0.028963 (Tsilingiris, 2008)
+#' @param kPo Standard atmosphere, Pa.
+#'     Default: 101325 (Allen, 1973)
+#' @param kR Universal gas constant, J/mol/K.
+#'     Default: 8.31447 (Moldover et al., 1988)
+#' @param kTo Base temperature, K.
+#'     Default: 288.15 (Berberan-Santos et al., 1997)
+#'
+#' @return Atmospheric pressure for the given elevation, Pa.
 #' @export
-elv2pres <- function(z) {
-  const()
-  kPo*(1 - kL*z/kTo)^(kG*kMa/(kR*kL))
+elv2pres <- function(z, kG = 9.80665, kL = 0.0065, kMa = 0.028963, kPo = 101325, kR = 8.31447, kTo = 288.15) {
+  kPo * (1 - kL * z / kTo) ^ (kG * kMa / (kR * kL))
 }
 
 
