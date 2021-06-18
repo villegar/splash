@@ -235,7 +235,7 @@ calc_daily_solar <- function(lat,
                              kb = 0.20,
                              kc = 0.25,
                              kd = 0.50,
-                             kfFEC = 9.80665,
+                             kfFEC = 2.04,
                              kGsc = 1360.8) {
   # ~~~~~~~~~~~~~~~~~~~~~~~~ FUNCTION WARNINGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   if (lat > 90 || lat < -90) {
