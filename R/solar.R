@@ -158,8 +158,7 @@ berger_tls <- function(n, N, ke = 0.01670, keps = 23.44, komega = 283, pir = pi 
 #' - 'Equation of Time' URL: \url{http://mb-soft.com/public3/equatime.html}
 #'
 #' - Javascript URL: \url{http://mb-soft.com/believe/txx/astro22.js}
-dcos <- function(d) {
-  const()
+dcos <- function(d, pir = pi / 180) {
   cos(d * pir)
 }
 
@@ -180,8 +179,7 @@ dcos <- function(d) {
 #'
 #' @return Sine of an angle.
 #' @export
-dsin <- function(d) {
-  const()
+dsin <- function(d, pir = pi / 180) {
   sin(d * pir)
 }
 
