@@ -76,20 +76,26 @@
 #' @param n Numeric, day of year.
 #' @param N Numeric, days in a year.
 #' @param ke Numeric, eccentricity of Earth's orbit.
-#'     Default: 0.01670, 2000CE (Berger 1978).
+#'     Default: 0.01670, 2000CE (Berger, 1978).
 #' @param keps Numeric, obliquity of Earth's elliptic.
-#'     Default: 23.44, 2000CE (Berger 1978).
+#'     Default: 23.44, 2000CE (Berger, 1978).
 #' @param komega Numeric, longitude of the perihelion, degrees.
-#'     Default: 283, 2000CE (Berger 1978).
+#'     Default: 283, 2000CE (Berger, 1978).
 #' @param pir \eqn{\pi} (\eqn{~} `r round(pi / 180, 6)`) in radians.
 #'
 #' @return True anomaly and true longitude for a given day.
 #' @export
 #'
 #' @references
-#' Berger, A. L. (1978), Long term variations of daily insolation
-#' and quaternary climatic changes, J. Atmos. Sci., 35, 2362-2367.
-berger_tls <- function(n, N, ke = 0.01670, keps = 23.44, komega = 283, pir = pi / 180) {
+#' Berger, A.L., 1978. Long-term variations of daily insolation and Quaternary
+#' climatic changes. Journal of Atmospheric Sciences, 35(12), pp.2362-2367.
+#' doi: 10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2
+berger_tls <- function(n,
+                       N,
+                       ke = 0.01670,
+                       keps = 23.44,
+                       komega = 283,
+                       pir = pi / 180) {
   # Variable substitutes:
   xee <- ke ^ 2
   xec <- ke ^ 3
@@ -153,7 +159,7 @@ berger_tls <- function(n, N, ke = 0.01670, keps = 23.44, komega = 283, pir = pi 
 #' @export
 #'
 #' @references
-#' C Johnson, Theoretical Physicist, Univ of Chicago
+#' C. Johnson, Theoretical Physicist, Univ of Chicago
 #'
 #' - 'Equation of Time' URL: \url{http://mb-soft.com/public3/equatime.html}
 #'
@@ -219,8 +225,60 @@ dsin <- function(d, pir = pi / 180) {
 #           - dsin() ......... sin(x*pi/180), where x is in degrees
 #           - julian_day() ... date to julian day
 # ************************************************************************
+#' Calculate daily solar radiation fluxes
+#'
+#' This function calculates daily solar radiation fluxes.
+#'
+#' @inheritParams calc_daily_evap
+#' @param kalb_sw double, shortwave albedo, Eq. (10) (Federer, 1968).
+#' @param kalb_vis double, visible light albedo, Eq. (17) (Sellers, 1985).
+#' @param kb double, empirical constant, Eq. (13) (Linacre, 1968).
+#' @param kc double, cloudy transmittivity, Eq. (12) (Linacre, 1968).
+#' @param kd double, angular coefficient of transmittivity, Eq. (12)
+#'     (Linacre, 1968).
+#' @param kfFEC double, flux-to-energy conversion, Eq. (17) (Meek et al., 1984).
+#' @param kGsc double, solar constant, Eq. (2) (Kopp and Lean, 2011).
+#'
+#' @return Returns a \code{list} object with the following variables:
+#' \itemize{
+#'  \item nu_deg ............ true anomaly, degrees
+#'  \item lambda_deg ........ true longitude, degrees
+#'  \item dr ................ distance factor, unitless
+#'  \item delta_deg ......... declination angle, degrees
+#'  \item hs_deg ............ sunset angle, degrees
+#'  \item ra_j.m2 ........... daily extraterrestrial radiation, J/m^2
+#'  \item tau ............... atmospheric transmittivity, unitless
+#'  \item ppfd_mol.m2 ....... daily photosyn. photon flux density, mol/m^2
+#'  \item hn_deg ............ net radiation hour angle, degrees
+#'  \item rn_j.m2 ........... daily net radiation, J/m^2
+#'  \item rnn_j.m2 .......... daily nighttime net radiation, J/m^2
+#' }
 #' @export
-
+#'
+#' @references
+#' Berger, A.L., 1978. Long-term variations of daily insolation and Quaternary
+#' climatic changes. Journal of Atmospheric Sciences, 35(12), pp.2362-2367.
+#' doi:10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2
+#'
+#' Federer, C.A., 1968. Spatial variation of net radiation, albedo and surface
+#' temperature of forests. Journal of Applied Meteorology and Climatology, 7(5),
+#' pp.789-795. doi:10.1175/1520-0450(1968)007<0789:SVONRA>2.0.CO;2
+#'
+#' Kopp, G. and Lean, J.L., 2011. A new, lower value of total solar irradiance:
+#' Evidence and climate significance. Geophys. Res. Lett. 38, L01706.
+#' doi:10.1029/2010GL045777
+#'
+#' Linacre, E.T., 1968. Estimating the net-radiation flux. Agricultural
+#' meteorology, 5(1), pp.49-63. doi:10.1016/0002-1571(68)90022-8
+#'
+#' Meek, D.W., Hatfield, J.L., Howell, T.A., Idso, S.B. and Reginato, R.J.,
+#' 1984. A generalized relationship between photosynthetically active radiation
+#' and solar radiation 1. Agronomy journal, 76(6), pp.939-945.
+#' doi:10.2134/agronj1984.00021962007600060018x
+#'
+#' Sellers, P.J., 1985. Canopy reflectance, photosynthesis and transpiration,
+#' International Journal of Remote Sensing, 6:8, 1335-1372,
+#' doi:10.1080/01431168508948283
 calc_daily_solar <- function(lat,
                              n,
                              elv = 0,
@@ -389,7 +447,25 @@ calc_daily_solar <- function(lat,
 # Ref:      Eq. 7.1 J. Meeus (1991), Chapter 7 "Julian Day", Astronomical
 #             Algorithms
 # ************************************************************************
+#' Calculate Julian day
+#'
+#' This function converts a date in the Gregorian calendar
+#' to a Julian day number (i.e., a method of consecutive
+#' numbering of days---does not have anything to do with
+#' the Julian calendar!)
+#'
+#' * valid for dates after -4712 January 1 (i.e., jde >= 0)
+#'
+#' @param y double, year.
+#' @param m double, month.
+#' @param i double, day of month.
+#'
+#' @return double, Julian day.
 #' @export
+#'
+#' @references
+#' Meeus, J. 1991. Chapter 7 "Julian Day". Astronomical Algorithms.
+#' Willmann-Bell, Incorporated.
 julian_day <- function(y, m, i) {
   if (m <= 2) {
     y <- y - 1
