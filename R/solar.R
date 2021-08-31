@@ -81,7 +81,7 @@
 #'     Default: 23.44, 2000CE (Berger 1978).
 #' @param komega Numeric, longitude of the perihelion, degrees.
 #'     Default: 283, 2000CE (Berger 1978).
-#' @param pir $\pi$ im radians.
+#' @param pir \eqn{\pi} (\eqn{~} `r round(pi / 180, 6)`) in radians.
 #'
 #' @return True anomaly and true longitude for a given day.
 #' @export
