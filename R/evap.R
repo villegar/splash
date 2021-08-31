@@ -257,7 +257,7 @@ enthalpy_vap <- function(tc) {
 #' @inheritParams density_h2o
 #'
 #' @return double, Pa/K.
-#' @export
+#' @keywords internal
 #'
 #' @references
 #' Allen, R.G., Pereira, L.S., Raes, D. and Smith, M., 1998. Crop
