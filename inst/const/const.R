@@ -40,7 +40,7 @@
 # This script contains the global constants defined in SPLASH.
 #
 # NOTE: orbital parameters: eccentricity, obliquity, and longitude of the
-# perihelion, are assumed constant while they infact vary slightly over time.
+# perihelion, are assumed constant while they in fact vary slightly over time.
 # There are methods for their calculation (e.g., Meeus, 1991). Eccentricity
 # varies 0.005--0.072 and is decreasing at rate of 0.00004 per century.
 # Obliquity varies 22.1--24.5 degrees with a period of ~41000 years.
