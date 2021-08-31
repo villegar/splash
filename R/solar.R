@@ -230,6 +230,7 @@ dsin <- function(d, pir = pi / 180) {
 #' This function calculates daily solar radiation fluxes.
 #'
 #' @inheritParams calc_daily_evap
+#' @param kA double, empirical constant, Eq. (13) (Monteith and Unsworth, 1990).
 #' @param kalb_sw double, shortwave albedo, Eq. (10) (Federer, 1968).
 #' @param kalb_vis double, visible light albedo, Eq. (17) (Sellers, 1985).
 #' @param kb double, empirical constant, Eq. (13) (Linacre, 1968).
@@ -288,6 +289,7 @@ calc_daily_solar <- function(lat,
                              ke = 0.01670,
                              keps = 23.44,
                              komega = 283,
+                             kA = 107,
                              kalb_sw = 0.17,
                              kalb_vis = 0.03,
                              kb = 0.20,
@@ -295,6 +297,9 @@ calc_daily_solar <- function(lat,
                              kd = 0.50,
                              kfFEC = 2.04,
                              kGsc = 1360.8) {
+  # Local bindings
+  pir <- pi / 180
+
   # ~~~~~~~~~~~~~~~~~~~~~~~~ FUNCTION WARNINGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   if (lat > 90 || lat < -90) {
     stop("Warning: Latitude outside range of validity (-90 to 90)!")

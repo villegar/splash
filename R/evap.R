@@ -453,6 +453,9 @@ calc_daily_evap <-function(lat,
                            keps = 23.44,
                            komega = 283,
                            kw = 0.26) {
+  # Local bindings
+  pir <- pi / 180
+
   # ~~~~~~~~~~~~~~~~~~~~~~~~ FUNCTION WARNINGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   if (lat > 90 || lat < -90) {
     stop("Warning: Latitude outside range of validity (-90 to 90)!")
@@ -511,37 +514,37 @@ calc_daily_evap <-function(lat,
   gam <- psychro(tc, patm)
   evap$gam_pa.k <- gam
 
-  econ <- s/(lv*pw*(s + gam))
+  econ <- s / (lv * pw * (s + gam))
   evap$econ_m3.j <- econ
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 3. Calculate daily condensation (cn), mm
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  cn <- (1e3)*econ*abs(rnn_d)
+  cn <- (1e3) * econ * abs(rnn_d)
   evap$cond_mm <- cn
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 4. Estimate daily equilibrium evapotranspiration (eet_d), mm
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  eet_d <- (1e3)*econ*rn_d
+  eet_d <- (1e3) * econ * rn_d
   evap$eet_mm <- eet_d
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 5. Estimate daily potential evapotranspiration (pet_d), mm
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  pet_d <- (1 + kw)*eet_d
+  pet_d <- (1 + kw) * eet_d
   evap$pet_mm <- pet_d
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 6. Calculate variable substitute (rx), (mm/hr)/(W/m^2)
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  rx <- (3.6e6)*(1 + kw)*econ
+  rx <- (3.6e6) * (1 + kw) * econ
   evap$rx <- rx
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 7. Calculate the intersection hour angle (hi), degrees
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  cos_hi <- sw/(rw*rv*rx) + rnl/(rw*rv) - ru/rv
+  cos_hi <- sw / (rw * rv * rx) + rnl / (rw * rv) - ru / rv
   #     print( paste( "in evap: sw =", sw))
   #     print( paste( "in evap: ru =", ru))
   #     print( paste( "in evap: rv =", rv))
@@ -555,17 +558,17 @@ calc_daily_evap <-function(lat,
     hi <- 180.0     # supply limits demand everywhere
   } else {
     hi <- acos(cos_hi)
-    hi <- hi/pir
+    hi <- hi / pir
   }
   evap$hi_deg <- hi
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 8. Estimate daily actual evapotranspiration (aet_d), mm
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  aet_d <- (24/pi)*(
-    sw*hi*pir +
-      rx*rw*rv*(dsin(hn) - dsin(hi)) +
-      (rx*rw*ru - rx*rnl)*(hn - hi)*pir
+  aet_d <- (24 / pi) * (
+    sw * hi * pir +
+      rx * rw * rv * (dsin(hn) - dsin(hi)) +
+      (rx * rw * ru - rx * rnl) * (hn - hi) * pir
   )
   evap$aet_mm <- aet_d
 
