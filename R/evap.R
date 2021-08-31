@@ -67,9 +67,7 @@
 # source("const.R")
 # source("solar.R")
 
-
 #### DEFINE FUNCTIONS ########################################################
-
 # ************************************************************************
 # Name:     density_h2o
 # Inputs:   - double (tc), air temperature, degrees C
@@ -82,44 +80,60 @@
 #             Journal of Chemical Physics 66, 2142;
 #             doi:10.1063/1.434179
 # ************************************************************************
-#' @export
+#' Calculate density of water at 1 atm, g/cm^3
+#'
+#' This function calculates the temperature and pressure dependent density of
+#' pure water.
+#'
+#' @param tc double, air temperature, degrees C.
+#' @param pa double, atm pressure, Pa.
+#'
+#' @return double, kg/m^3.
+#' @keywords internal
+#'
+#' @references
+#' Chen, C.T., Fine, R.A. and Millero, F.J., 1977. The equation of state of
+#' pure water determined from sound speeds. The Journal of Chemical Physics,
+#' 66(5), pp.2142-2144. doi:10.1063/1.434179
 density_h2o <- function(tc, pa) {
   # Calculate density of water at 1 atm, g/cm^3
   po <- 0.99983952 +
-    (6.788260e-5)*tc +
-    -(9.08659e-6)*tc*tc +
-    (1.022130e-7)*tc*tc*tc +
-    -(1.35439e-9)*tc*tc*tc*tc +
-    (1.471150e-11)*tc*tc*tc*tc*tc +
-    -(1.11663e-13)*tc*tc*tc*tc*tc*tc +
-    (5.044070e-16)*tc*tc*tc*tc*tc*tc*tc +
-    -(1.00659e-18)*tc*tc*tc*tc*tc*tc*tc*tc
+    (6.788260e-5)  * tc +
+    -(9.08659e-6)  * tc * tc +
+    (1.022130e-7)  * tc * tc * tc +
+    -(1.35439e-9)  * tc * tc * tc * tc +
+    (1.471150e-11) * tc * tc * tc * tc * tc +
+    -(1.11663e-13) * tc * tc * tc * tc * tc * tc +
+    (5.044070e-16) * tc * tc * tc * tc * tc * tc * tc +
+    -(1.00659e-18) * tc * tc * tc * tc * tc * tc * tc * tc
 
   # Calculate the bulk modulus of water at 1 atm, atm
-  ko <- 19652.17 +
-    148.1830*tc +
-    -2.29995*tc*tc +
-    0.01281*tc*tc*tc +
-    -(4.91564e-5)*tc*tc*tc*tc +
-    (1.035530e-7)*tc*tc*tc*tc*tc
+  ko <- 19652.17  +
+    148.1830      * tc +
+    -2.29995      * tc * tc +
+    0.01281       * tc * tc * tc +
+    -(4.91564e-5) * tc * tc * tc * tc +
+    (1.035530e-7) * tc * tc * tc * tc * tc
 
   # Calculate temperature-dependend coefficients
   ca <- 3.26138 +
-    (5.223e-4)*tc +
-    (1.324e-4)*tc*tc +
-    -(7.655e-7)*tc*tc*tc +
-    (8.584e-10)*tc*tc*tc*tc
+    (5.223e-4)  * tc +
+    (1.324e-4)  * tc * tc +
+    -(7.655e-7) * tc * tc * tc +
+    (8.584e-10) * tc * tc * tc * tc
 
   cb <- (7.2061e-5) +
-    -(5.8948e-6)*tc +
-    (8.69900e-8)*tc*tc +
-    -(1.0100e-9)*tc*tc*tc +
-    (4.3220e-12)*tc*tc*tc*tc
+    -(5.8948e-6)    * tc +
+    (8.69900e-8)    * tc * tc +
+    -(1.0100e-9)    * tc * tc * tc +
+    (4.3220e-12)    * tc * tc * tc * tc
 
   # Convert pressure to bar (1 bar = 100000 Pa)
-  pbar <- (1e-5)*pa
+  pbar <- (1e-5) * pa
 
-  pw <- (1e3)*po*(ko + ca*pbar + cb*pbar^2)/(ko + ca*pbar + cb*pbar^2 - pbar)
+  pw <-
+    (1e3) * po * (ko + ca * pbar + cb * pbar ^ 2) / (ko + ca * pbar + cb *
+                                                       pbar ^ 2 - pbar)
   return(pw)
 }
 
@@ -139,13 +153,13 @@ density_h2o <- function(tc, pa) {
 # ************************************************************************
 #' Elevation to pressure
 #'
-#' Calculates atmospheric pressure for a given elevation
+#' Calculates atmospheric pressure for a given elevation.
 #'
 #' @param z Elevation, m.
 #' @param kG Gravitational acceleration, m/s^2.
 #'     Default: 9.80665 (Allen, 1973)
 #' @param kL Adiabatic lapse rate, K/m.
-#'     Default: 0.0065 (Cavcar, 2000)
+#'     Default: 0.0065 (Allen, 1973)
 #' @param kMa Molecular weight of dry air, kg/mol.
 #'     Default: 0.028963 (Tsilingiris, 2008)
 #' @param kPo Standard atmosphere, Pa.
@@ -156,8 +170,34 @@ density_h2o <- function(tc, pa) {
 #'     Default: 288.15 (Berberan-Santos et al., 1997)
 #'
 #' @return Atmospheric pressure for the given elevation, Pa.
-#' @export
-elv2pres <- function(z, kG = 9.80665, kL = 0.0065, kMa = 0.028963, kPo = 101325, kR = 8.31447, kTo = 288.15) {
+#' @keywords internal
+#'
+#' @references
+#' Allen, R.G., Pereira, L.S., Raes, D. and Smith, M., 1998. Crop
+#' evapotranspiration-Guidelines for computing crop water requirements-FAO
+#' Irrigation and drainage paper 56. Food and Agriculture Organization of the
+#' United Nations, Rome, 300(9), p.D05109. Available:
+#' http://www.fao.org/docrep/x0490e/x0490e07.htm
+#'
+#' Berberan-Santos, M.N., Bodunov, E.N. and Pogliani, L., 1997. On the
+#' barometric formula. American Journal of Physics, 65(5), pp.404-412.
+#' doi:10.1119/1.18555
+#'
+#' Moldover, M.R., Trusler, J.M., Edwards, T.J., Mehl, J.B. and Davis, R.S.,
+#' 1988. Measurement of the universal gas constant R using a spherical acoustic
+#' resonator. Physical review letters, 60(4), p.249.
+#' doi:10.1103/PhysRevLett.60.249
+#'
+#' Tsilingiris, P.T., 2008. Thermophysical and transport properties of humid air
+#' at temperature range between 0 and 100 C. Energy Conversion and Management,
+#' 49(5), pp.1098-1110. doi:10.1016/j.enconman.2007.09.015
+elv2pres <- function(z,
+                     kG = 9.80665,
+                     kL = 0.0065,
+                     kMa = 0.028963,
+                     kPo = 101325,
+                     kR = 8.31447,
+                     kTo = 288.15) {
   kPo * (1 - kL * z / kTo) ^ (kG * kMa / (kR * kL))
 }
 
@@ -173,9 +213,23 @@ elv2pres <- function(z, kG = 9.80665, kL = 0.0065, kMa = 0.028963, kPo = 101325,
 #             Journal of the Royal Meteorological Society, vol. 110, pp. 1186--
 #             1190.
 # ************************************************************************
-#' @export
+#' Calculate enthalpy of vaporization
+#'
+#' This function calculates the temperature-dependent enthalpy of vaporization
+#' (latent heat of vaporization).
+#'
+#' @inheritParams density_h2o
+#'
+#' @return double, J/kg.
+#' @keywords internal
+#'
+#' @references
+#' Eq. 8, Henderson‐Sellers, B., 1984. A new formula for latent heat of
+#' vaporization of water as a function of temperature. Quarterly Journal of the
+#' Royal Meteorological Society, 110(466), pp.1186-1190.
+#' doi:10.1002/qj.49711046626
 enthalpy_vap <- function(tc) {
-  1.91846e6*((tc + 273.15)/(tc + 273.15 - 33.91))^2
+  1.91846e6 * ((tc + 273.15) / (tc + 273.15 - 33.91)) ^ 2
 }
 
 
@@ -195,7 +249,22 @@ enthalpy_vap <- function(tc) {
 #           United Nations, Available:
 #           http://www.fao.org/docrep/x0490e/x0490e07.htm
 # ************************************************************************
+#' Calculate psychrometric constant
+#'
+#' This function calculates the temperature and pressure dependent
+#' psychrometric constant.
+#'
+#' @inheritParams density_h2o
+#'
+#' @return double, Pa/K.
 #' @export
+#'
+#' @references
+#' Allen, R.G., Pereira, L.S., Raes, D. and Smith, M., 1998. Crop
+#' evapotranspiration-Guidelines for computing crop water requirements-FAO
+#' Irrigation and drainage paper 56. Food and Agriculture Organization of the
+#' United Nations, Rome, 300(9), p.D05109. Available:
+#' http://www.fao.org/docrep/x0490e/x0490e07.htm
 psychro <- function(tc, pa) {
   # Calculate the specific heat capacity of water, J/kg/K
   cp <- specific_heat(tc)
@@ -204,7 +273,7 @@ psychro <- function(tc, pa) {
   lv <- enthalpy_vap(tc)
 
   # Calculate psychrometric constant, Pa/K
-  return(cp*kMa*pa/(kMv*lv))
+  return(cp * kMa * pa / (kMv * lv))
 }
 
 
@@ -217,21 +286,32 @@ psychro <- function(tc, pa) {
 #           humid air at temperature range between 0 and 100 °C, Energy
 #           Conversion and Management, vol. 49, pp. 1098--1110.
 # ************************************************************************
-#' @export
+#' Calculate specific heat
+#'
+#' This function calculates the specific heat of moist air.
+#'
+#' @inheritParams density_h2o
+#'
+#' @return double, specific heat of moist air, J/kg/K.
+#' @keywords internal
+#'
+#' @references
+#' Tsilingiris, P.T., 2008. Thermophysical and transport properties of humid air
+#' at temperature range between 0 and 100 C. Energy Conversion and Management,
+#' 49(5), pp.1098-1110. doi:10.1016/j.enconman.2007.09.015
 specific_heat <- function(tc) {
   if (tc < 0) {
     tc <- 0
   } else if (tc > 100) {
     tc <- 100
   }
-  cp <- 1.0045714270 +
-    (2.050632750e-3)*tc -
-    (1.631537093e-4)*tc*tc +
-    (6.212300300e-6)*tc*tc*tc -
-    (8.830478888e-8)*tc*tc*tc*tc +
-    (5.071307038e-10)*tc*tc*tc*tc*tc
-  cp <- (1e3)*cp
-
+  cp <- 1.0045714270  +
+    (2.050632750e-3)  * tc -
+    (1.631537093e-4)  * tc * tc +
+    (6.212300300e-6)  * tc * tc * tc -
+    (8.830478888e-8)  * tc * tc * tc * tc +
+    (5.071307038e-10) * tc * tc * tc * tc * tc
+  cp <- (1e3) * cp
   return(cp)
 }
 
@@ -246,11 +326,30 @@ specific_heat <- function(tc) {
 # Ref:      - Eq. 6, Prentice et al. (1993);
 #           - Eq. 13, Allen et al. (1998)
 # ************************************************************************
-#' @export
+#' Calculate the temperature-dependent slope
+#'
+#' This function calculates the temperature-dependent slope of the saturation
+#' pressure temperature curve using the methodology presented in the eMast
+#' energy.cpp script.
+#' @inheritParams density_h2o
+#'
+#' @return double, Pa/K.
+#' @keywords internal
+#'
+#' @references
+#' Allen, R.G., Pereira, L.S., Raes, D. and Smith, M., 1998. Crop
+#' evapotranspiration-Guidelines for computing crop water requirements-FAO
+#' Irrigation and drainage paper 56. Food and Agriculture Organization of the
+#' United Nations, Rome, 300(9), p.D05109. Available:
+#' http://www.fao.org/docrep/x0490e/x0490e07.htm
+#'
+#' Prentice, I.C., Sykes, M.T. and Cramer, W., 1993. A simulation model for the
+#' transient effects of climate change on forest landscapes. Ecological
+#' modelling, 65(1-2), pp.51-70. doi:10.1016/0304-3800(93)90126-D
 sat_slope <- function(tc) {
-  (17.269)*(237.3)*(610.78)*exp(17.269*tc/(237.3 + tc))/(237.3 + tc)^2
+  (17.269) * (237.3) * (610.78) *
+    exp(17.269 * tc / (237.3 + tc)) / (237.3 + tc) ^ 2
 }
-
 
 # ************************************************************************
 # Name:     calc_daily_evap
@@ -291,7 +390,58 @@ sat_slope <- function(tc) {
 #           - psychro() ...... psychrometric constant
 #           - sat_slope() .... slope of sat. pressure temp curve
 # ************************************************************************
+#' Calculate daily evaporation fluxes
+#'
+#' This function calculates daily radiation, condensation, and evaporation
+#' fluxes.
+#'
+#' @param lat double, decimal degrees.
+#' @param n double, day of year.
+#' @param elv double, elevation, m A.S.L. Default: \code{0}.
+#' @param y double, year. Default: \code{0}.
+#' @param sf double, fraction of sunshine hours. Default: \code{1}.
+#' @param tc double, mean daily air temperature, degrees C.
+#'     Default: \code{23.0}.
+#' @param sw double, evaporative supply rate, mm/hr. Default: \code{1.0}.
+#' @param ke double, eccentricity of earth's orbit, 2000CE (Berger 1978).
+#'     Default: \code{0.01670}.
+#' @param keps double, obliquity of earth's elliptic, 2000CE (Berger 1978).
+#'     Default: \code{23.44}.
+#' @param komega double, lon. of perihelion, degrees, 2000CE (Berger, 1978).
+#'     Default: \code{283}
+#' @param kw double, PET entrainment, \eqn{(1 + kw) * EET}
+#'     (Priestley-Taylor, 1972). Default: \code{0.26}.
+#'
+#' @return Returns a \code{list} object with the following variables:
+#' \itemize{
+#'  \item nu_deg ............ true anomaly, degrees
+#'  \item lambda_deg ........ true longitude, degrees
+#'  \item dr ................ distance factor, unitless
+#'  \item delta_deg ......... declination angle, degrees
+#'  \item hs_deg ............ sunset angle, degrees
+#'  \item ra_j.m2 ........... daily extraterrestrial radiation, J/m^2
+#'  \item tau ............... atmospheric transmittivity, unitless
+#'  \item ppfd_mol.m2 ....... daily photosyn photon flux density, mol/m^2
+#'  \item hn_deg ............ net radiation hour angle, degrees
+#'  \item rn_j.m2 ........... daily net radiation, J/m^2
+#'  \item rnn_j.m2 .......... daily nighttime net radiation, J/m^2
+#'  \item econ_m3.j ......... water to energy conversion, m^3/J
+#'  \item cond_mm ........... daily condensation, mm
+#'  \item eet_mm ............ daily equilibrium evapotranspiration, mm
+#'  \item pet_mm ............ daily potential evapotranspiration, mm
+#'  \item hi_deg ............ intersection hour angle, degrees
+#'  \item aet_mm ............ daily actual evapotranspiration, mm
+#' }
 #' @export
+#'
+#' @references
+#' Berger, A., 1978. Long-term variations of daily insolation and Quaternary
+#' climatic changes. Journal of Atmospheric Sciences, 35(12), pp.2362-2367.
+#' doi: 10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2
+#'
+#' Priestley, C.H.B. and Taylor, R.J., 1972. On the assessment of surface heat
+#' flux and evaporation using large-scale parameters. Monthly weather review,
+#' 100(2), pp.81-92. doi: 10.1175/1520-0493(1972)100<0081:OTAOSH>2.3.CO;2
 calc_daily_evap <-function(lat,
                            n,
                            elv = 0,
