@@ -1,0 +1,16 @@
+citHeader("To cite splash in publications use:")
+
+citEntry(
+  key      = "gmd-10-689-2017",
+  entry    = "Article",
+  title    = "{Simple process-led algorithms for simulating habitats (SPLASH v.1.0): robust indices of radiation, evapotranspiration and plant-available moisture}",
+  author   = "Davis, T. W. and Prentice, I. C. and Stocker, B. D. and Thomas, R. T. and Whitley, R. J. and Wang, H. and Evans, B. J. and Gallego-Sala, A. V. and Sykes, M. T. and Cramer, W.",
+  journal  = "Geoscientific Model Development",
+  year     = "2017",
+  volume   = "10",
+  number   = "2",
+  pages    = "689--708",
+  url      = "https://gmd.copernicus.org/articles/10/689/2017/",
+  doi      = "10.5194/gmd-10-689-2017",
+  textVersion = paste("Davis, T.W., Prentice, I.C., Stocker, B.D., Thomas, R.T., Whitley, R.J., Wang, H., Evans, B.J., Gallego-Sala, A.V., Sykes, M.T. and Cramer, W., 2017. Simple process-led algorithms for simulating habitats (SPLASH v. 1.0): robust indices of radiation, evapotranspiration and plant-available moisture. Geoscientific Model Development, 10(2), pp.689-708. doi:10.5194/gmd-10-689-2017")
+)
