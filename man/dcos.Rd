@@ -16,9 +16,10 @@ Cosine of an angle.
 Calculates the cosine of an angle (d) given in degrees.
 }
 \references{
-C Johnson, Theoretical Physicist, Univ of Chicago
+C. Johnson, Theoretical Physicist, Univ of Chicago
 \itemize{
 \item 'Equation of Time' URL: \url{http://mb-soft.com/public3/equatime.html}
 \item Javascript URL: \url{http://mb-soft.com/believe/txx/astro22.js}
 }
 }
+\keyword{internal}

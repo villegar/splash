@@ -12,13 +12,13 @@ berger_tls(n, N, ke = 0.0167, keps = 23.44, komega = 283, pir = pi/180)
 \item{N}{Numeric, days in a year.}
 
 \item{ke}{Numeric, eccentricity of Earth's orbit.
-Default: 0.01670, 2000CE (Berger 1978).}
+Default: 0.01670, 2000CE (Berger, 1978).}
 
 \item{keps}{Numeric, obliquity of Earth's elliptic.
-Default: 23.44, 2000CE (Berger 1978).}
+Default: 23.44, 2000CE (Berger, 1978).}
 
 \item{komega}{Numeric, longitude of the perihelion, degrees.
-Default: 283, 2000CE (Berger 1978).}
+Default: 283, 2000CE (Berger, 1978).}
 
 \item{pir}{\eqn{\pi} (\eqn{~} 0.017453) in radians.}
 }
@@ -29,6 +29,8 @@ True anomaly and true longitude for a given day.
 Calculate true anomaly and true longitude
 }
 \references{
-Berger, A. L. (1978), Long term variations of daily insolation
-and quaternary climatic changes, J. Atmos. Sci., 35, 2362-2367.
+Berger, A.L., 1978. Long-term variations of daily insolation and Quaternary
+climatic changes. Journal of Atmospheric Sciences, 35(12), pp.2362-2367.
+doi: 10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2
 }
+\keyword{internal}

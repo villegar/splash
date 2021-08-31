@@ -15,3 +15,4 @@ Sine of an angle.
 \description{
 Calculates the sine of an angle (d) given in degrees.
 }
+\keyword{internal}
