@@ -82,7 +82,7 @@
 #'   \item{$year}{Year of data.}
 #' }
 #' @export
-read_csv <- function(fname, y=-1) {
+read_csv <- function(fname, y = -1) {
   my_data <- list()
   my_data$file_name <- fname
 
@@ -135,7 +135,7 @@ read_csv <- function(fname, y=-1) {
 #'   \item{$year}{Year of data.}
 #' }
 #' @export
-read_txt <- function(my_data, fname, var, y=-1) {
+read_txt <- function(my_data, fname, var, y = -1) {
   my_data$file_name <- c(my_data$file_name, fname)
   DATA <- scan(fname)
   if (var == "sf") {
