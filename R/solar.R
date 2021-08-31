@@ -84,7 +84,7 @@
 #' @param pir \eqn{\pi} (\eqn{~} `r round(pi / 180, 6)`) in radians.
 #'
 #' @return True anomaly and true longitude for a given day.
-#' @export
+#' @keywords internal
 #'
 #' @references
 #' Berger, A.L., 1978. Long-term variations of daily insolation and Quaternary
@@ -156,7 +156,7 @@ berger_tls <- function(n,
 #' @param d Numeric, angle in degrees.
 #'
 #' @return Cosine of an angle.
-#' @export
+#' @keywords internal
 #'
 #' @references
 #' C. Johnson, Theoretical Physicist, Univ of Chicago
@@ -184,7 +184,7 @@ dcos <- function(d, pir = pi / 180) {
 #' @param d Numeric, angle in degrees.
 #'
 #' @return Sine of an angle.
-#' @export
+#' @keywords internal
 dsin <- function(d, pir = pi / 180) {
   sin(d * pir)
 }
