@@ -4,7 +4,7 @@
 \alias{dsin}
 \title{Calculate sine of an angle}
 \usage{
-dsin(d)
+dsin(d, pir = pi/180)
 }
 \arguments{
 \item{d}{Numeric, angle in degrees.}

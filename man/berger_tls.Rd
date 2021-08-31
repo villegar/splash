@@ -4,7 +4,7 @@
 \alias{berger_tls}
 \title{Calculate true anomaly and true longitude}
 \usage{
-berger_tls(n, N, ke = 0.0167, keps = 23.44, komega = 283)
+berger_tls(n, N, ke = 0.0167, keps = 23.44, komega = 283, pir = pi/180)
 }
 \arguments{
 \item{n}{Numeric, day of year.}
@@ -19,6 +19,8 @@ Default: 23.44, 2000CE (Berger 1978).}
 
 \item{komega}{Numeric, longitude of the perihelion, degrees.
 Default: 283, 2000CE (Berger 1978).}
+
+\item{pir}{\eqn{\pi} (\eqn{~} 0.017453) in radians.}
 }
 \value{
 True anomaly and true longitude for a given day.

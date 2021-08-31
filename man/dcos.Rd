@@ -4,7 +4,7 @@
 \alias{dcos}
 \title{Calculate cosine of an angle}
 \usage{
-dcos(d)
+dcos(d, pir = pi/180)
 }
 \arguments{
 \item{d}{Numeric, angle in degrees.}
