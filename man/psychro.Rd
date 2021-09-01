@@ -4,7 +4,7 @@
 \alias{psychro}
 \title{Calculate psychrometric constant}
 \usage{
-psychro(tc, pa, kMa = 0.028963, KMv = 0.01802)
+psychro(tc, pa, kMa = 0.028963, kMv = 0.01802)
 }
 \arguments{
 \item{tc}{double, air temperature, degrees C.}

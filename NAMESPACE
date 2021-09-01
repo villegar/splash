@@ -3,7 +3,6 @@
 export(calc_daily_evap)
 export(calc_daily_solar)
 export(julian_day)
-export(quick_run)
 export(read_csv)
 export(read_txt)
 export(run_one_day)
