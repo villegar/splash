@@ -157,17 +157,17 @@ density_h2o <- function(tc, pa) {
 #'
 #' @param z Elevation, m.
 #' @param kG Gravitational acceleration, m/s^2.
-#'     Default: 9.80665 (Allen, 1973)
+#'     Default: \eqn{9.80665} (Allen, 1973)
 #' @param kL Adiabatic lapse rate, K/m.
-#'     Default: 0.0065 (Allen, 1973)
+#'     Default: \eqn{0.0065} (Allen, 1973)
 #' @param kMa Molecular weight of dry air, kg/mol.
-#'     Default: 0.028963 (Tsilingiris, 2008)
+#'     Default: \eqn{0.028963} (Tsilingiris, 2008)
 #' @param kPo Standard atmosphere, Pa.
-#'     Default: 101325 (Allen, 1973)
+#'     Default: \eqn{101325} (Allen, 1973)
 #' @param kR Universal gas constant, J/mol/K.
-#'     Default: 8.31447 (Moldover et al., 1988)
+#'     Default: \eqn{8.31447} (Moldover et al., 1988)
 #' @param kTo Base temperature, K.
-#'     Default: 288.15 (Berberan-Santos et al., 1997)
+#'     Default: \eqn{288.15} (Berberan-Santos et al., 1997)
 #'
 #' @return Atmospheric pressure for the given elevation, Pa.
 #' @keywords internal
@@ -255,7 +255,10 @@ enthalpy_vap <- function(tc) {
 #' psychrometric constant.
 #'
 #' @inheritParams density_h2o
-#'
+#' @param kMa double, molecular weight of dry air, kg/mol.
+#'     Default: \eqn{0.028963} (Tsilingiris, 2008)
+#' @param kMv double, molecular weight of water vapor, kg/mol.
+#'     Default: \eqn{0.01802} (Tsilingiris, 2008)
 #' @return double, Pa/K.
 #' @keywords internal
 #'
@@ -265,7 +268,7 @@ enthalpy_vap <- function(tc) {
 #' Irrigation and drainage paper 56. Food and Agriculture Organization of the
 #' United Nations, Rome, 300(9), p.D05109. Available:
 #' http://www.fao.org/docrep/x0490e/x0490e07.htm
-psychro <- function(tc, pa) {
+psychro <- function(tc, pa, kMa = 0.028963, KMv = 0.01802) {
   # Calculate the specific heat capacity of water, J/kg/K
   cp <- specific_heat(tc)
 
@@ -397,20 +400,24 @@ sat_slope <- function(tc) {
 #'
 #' @param lat double, decimal degrees.
 #' @param n double, day of year.
-#' @param elv double, elevation, m A.S.L. Default: \code{0}.
-#' @param y double, year. Default: \code{0}.
-#' @param sf double, fraction of sunshine hours. Default: \code{1}.
+#' @param elv double, elevation, m A.S.L.
+#'     Default: \eqn{0}.
+#' @param y double, year.
+#'     Default: \eqn{0}.
+#' @param sf double, fraction of sunshine hours.
+#'     Default: \eqn{1}.
 #' @param tc double, mean daily air temperature, degrees C.
-#'     Default: \code{23.0}.
-#' @param sw double, evaporative supply rate, mm/hr. Default: \code{1.0}.
-#' @param ke double, eccentricity of earth's orbit, 2000CE (Berger, 1978).
-#'     Default: \code{0.01670}.
-#' @param keps double, obliquity of earth's elliptic, 2000CE (Berger, 1978).
-#'     Default: \code{23.44}.
-#' @param komega double, lon. of perihelion, degrees, 2000CE (Berger, 1978).
-#'     Default: \code{283}
+#'     Default: \eqn{23.0}.
+#' @param sw double, evaporative supply rate, mm/hr.
+#'     Default: \eqn{1.0}.
+#' @param ke double, eccentricity of earth's orbit.
+#'     Default: \eqn{0.01670}, 2000CE (Berger, 1978).
+#' @param keps double, obliquity of earth's elliptic.
+#'     Default: \eqn{23.44}, 2000CE (Berger, 1978).
+#' @param komega double, lon. of perihelion, degrees
+#'     Default: \eqn{283}, 2000CE (Berger, 1978).
 #' @param kw double, PET entrainment, \eqn{(1 + kw) * EET}
-#'     (Priestley-Taylor, 1972). Default: \code{0.26}.
+#'     Default: \eqn{0.26} (Priestley-Taylor, 1972)
 #'
 #' @return Returns a \code{list} object with the following variables:
 #' \itemize{

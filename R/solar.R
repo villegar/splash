@@ -75,13 +75,8 @@
 #'
 #' @param n Numeric, day of year.
 #' @param N Numeric, days in a year.
-#' @param ke Numeric, eccentricity of Earth's orbit.
-#'     Default: 0.01670, 2000CE (Berger, 1978).
-#' @param keps Numeric, obliquity of Earth's elliptic.
-#'     Default: 23.44, 2000CE (Berger, 1978).
-#' @param komega Numeric, longitude of the perihelion, degrees.
-#'     Default: 283, 2000CE (Berger, 1978).
-#' @param pir \eqn{\pi} (\eqn{~} `r round(pi / 180, 6)`) in radians.
+#' @inheritParams calc_daily_evap
+#' @param pir \eqn{\pi} (\eqn{~ `r round(pi / 180, 6)`}) in radians.
 #'
 #' @return True anomaly and true longitude for a given day.
 #' @keywords internal
@@ -230,15 +225,22 @@ dsin <- function(d, pir = pi / 180) {
 #' This function calculates daily solar radiation fluxes.
 #'
 #' @inheritParams calc_daily_evap
-#' @param kA double, empirical constant, Eq. (13) (Monteith and Unsworth, 1990).
-#' @param kalb_sw double, shortwave albedo, Eq. (10) (Federer, 1968).
-#' @param kalb_vis double, visible light albedo, Eq. (17) (Sellers, 1985).
-#' @param kb double, empirical constant, Eq. (13) (Linacre, 1968).
-#' @param kc double, cloudy transmittivity, Eq. (12) (Linacre, 1968).
-#' @param kd double, angular coefficient of transmittivity, Eq. (12)
-#'     (Linacre, 1968).
-#' @param kfFEC double, flux-to-energy conversion, Eq. (17) (Meek et al., 1984).
-#' @param kGsc double, solar constant, Eq. (2) (Kopp and Lean, 2011).
+#' @param kA double, empirical constant, degrees Celsius.
+#'     Default: \eqn{107} (Monteith and Unsworth, 1990).
+#' @param kalb_sw double, shortwave albedo.
+#'     Default: \eqn{0.17} (Federer, 1968).
+#' @param kalb_vis double, visible light albedo.
+#'     Default: \eqn{0.03} (Sellers, 1985).
+#' @param kb double, empirical constant.
+#'     Default: \eqn{0.20} (Linacre, 1968).
+#' @param kc double, cloudy transmittivity.
+#'     Default: \eqn{0.25} (Linacre, 1968).
+#' @param kd double, angular coefficient of transmittivity.
+#'     Default: \eqn{0.50} (Linacre, 1968).
+#' @param kfFEC double, flux-to-energy conversion, umol/J.
+#'     Default: \eqn{2.04} (Meek et al., 1984).
+#' @param kGsc double, solar constant, W/m^2.
+#'     Default: \eqn{1360.8} (Kopp and Lean, 2011).
 #'
 #' @return Returns a \code{list} object with the following variables:
 #' \itemize{
@@ -276,6 +278,9 @@ dsin <- function(d, pir = pi / 180) {
 #' 1984. A generalized relationship between photosynthetically active radiation
 #' and solar radiation 1. Agronomy journal, 76(6), pp.939-945.
 #' doi:10.2134/agronj1984.00021962007600060018x
+#'
+#' Monteith, J., and Unsworth, M., 1990. Principles of Environmental Physics,
+#' Butterworth-Heinemann, Oxford.
 #'
 #' Sellers, P.J., 1985. Canopy reflectance, photosynthesis and transpiration,
 #' International Journal of Remote Sensing, 6:8, 1335-1372,
@@ -470,7 +475,7 @@ calc_daily_solar <- function(lat,
 #'
 #' @references
 #' Meeus, J. 1991. Chapter 7 "Julian Day". Astronomical Algorithms.
-#' Willmann-Bell, Incorporated.
+#' Willmann-Bell.
 julian_day <- function(y, m, i) {
   if (m <= 2) {
     y <- y - 1
