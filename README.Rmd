@@ -17,6 +17,8 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 `r badger::badge_devel("villegar/splash", "yellow")`
+`r badger::badge_cran_release("splash", "black")`
+`r badger::badge_github_actions("villegar/splash")`
 `r badger::badge_doi("10.5281/zenodo.376293", "blue")`
 <!-- badges: end -->
 
@@ -44,6 +46,6 @@ T. W. Davis, I. C. Prentice, B. D. Stocker, R. J. Whitley, H. Wang, B. J.
 Evans, A. V. Gallego-Sala, M. T. Sykes, and W. Cramer, _Simple process-led
 algorithms for simulating habitats (SPLASH): Robust indices of radiation
 evapo-transpiration and plant-available moisture_, Geoscientific Model Development, 
-2016. DOI: \url{https://doi.org/10.5281/zenodo.376293}
+2016. DOI: https://doi.org/10.5281/zenodo.376293
 
 Source: https://bitbucket.org/labprentice/splash/

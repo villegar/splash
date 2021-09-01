@@ -6,6 +6,9 @@
 <!-- badges: start -->
 
 [![](https://img.shields.io/badge/devel%20version-1.0.0-yellow.svg)](https://github.com/villegar/splash)
+[![](https://www.r-pkg.org/badges/version/splash?color=black)](https://cran.r-project.org/package=splash)
+[![R build
+status](https://github.com/villegar/splash/workflows/R-CMD-check/badge.svg)](https://github.com/villegar/splash/actions)
 [![](https://img.shields.io/badge/doi-10.5281/zenodo.376293-blue.svg)](https://doi.org/10.5281/zenodo.376293)
 <!-- badges: end -->
 
@@ -39,6 +42,7 @@ T. W. Davis, I. C. Prentice, B. D. Stocker, R. J. Whitley, H. Wang, B.
 J. Evans, A. V. Gallego-Sala, M. T. Sykes, and W. Cramer, *Simple
 process-led algorithms for simulating habitats (SPLASH): Robust indices
 of radiation evapo-transpiration and plant-available moisture*,
-Geoscientific Model Development, 2016. DOI: 
+Geoscientific Model Development, 2016. DOI:
+<https://doi.org/10.5281/zenodo.376293>
 
 Source: <https://bitbucket.org/labprentice/splash/>
