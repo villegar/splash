@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Elevation to pressure — elv2pres • splash</title>
+<title>Changelog • splash</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,7 @@
 
 
 
-<meta property="og:title" content="Elevation to pressure — elv2pres" />
-<meta property="og:description" content="Calculates atmospheric pressure for a given elevation." />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -59,7 +58,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -111,91 +110,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Elevation to pressure</h1>
-    <small class="dont-index">Source: <a href='https://github.com/villegar/splash/blob/master/R/evap.R'><code>R/evap.R</code></a></small>
-    <div class="hidden name"><code>elv2pres.Rd</code></div>
+      <h1 data-toc-skip>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/villegar/splash/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    <p>Calculates atmospheric pressure for a given elevation.</p>
-    </div>
-
-    <pre class="usage"><span class='fu'>elv2pres</span><span class='op'>(</span>
-  <span class='va'>z</span>,
-  kG <span class='op'>=</span> <span class='fl'>9.80665</span>,
-  kL <span class='op'>=</span> <span class='fl'>0.0065</span>,
-  kMa <span class='op'>=</span> <span class='fl'>0.028963</span>,
-  kPo <span class='op'>=</span> <span class='fl'>101325</span>,
-  kR <span class='op'>=</span> <span class='fl'>8.31447</span>,
-  kTo <span class='op'>=</span> <span class='fl'>288.15</span>
-<span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>z</th>
-      <td><p>Elevation, m.</p></td>
-    </tr>
-    <tr>
-      <th>kG</th>
-      <td><p>Gravitational acceleration, m/s^2.
-Default: \(9.80665\) (Allen, 1973)</p></td>
-    </tr>
-    <tr>
-      <th>kL</th>
-      <td><p>Adiabatic lapse rate, K/m.
-Default: \(0.0065\) (Allen, 1973)</p></td>
-    </tr>
-    <tr>
-      <th>kMa</th>
-      <td><p>Molecular weight of dry air, kg/mol.
-Default: \(0.028963\) (Tsilingiris, 2008)</p></td>
-    </tr>
-    <tr>
-      <th>kPo</th>
-      <td><p>Standard atmosphere, Pa.
-Default: \(101325\) (Allen, 1973)</p></td>
-    </tr>
-    <tr>
-      <th>kR</th>
-      <td><p>Universal gas constant, J/mol/K.
-Default: \(8.31447\) (Moldover et al., 1988)</p></td>
-    </tr>
-    <tr>
-      <th>kTo</th>
-      <td><p>Base temperature, K.
-Default: \(288.15\) (Berberan-Santos et al., 1997)</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Atmospheric pressure for the given elevation, Pa.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Allen, R.G., Pereira, L.S., Raes, D. and Smith, M., 1998. Crop
-evapotranspiration-Guidelines for computing crop water requirements-FAO
-Irrigation and drainage paper 56. Food and Agriculture Organization of the
-United Nations, Rome, 300(9), p.D05109. Available:
-http://www.fao.org/docrep/x0490e/x0490e07.htm</p>
-<p>Berberan-Santos, M.N., Bodunov, E.N. and Pogliani, L., 1997. On the
-barometric formula. American Journal of Physics, 65(5), pp.404-412.
-doi:10.1119/1.18555</p>
-<p>Moldover, M.R., Trusler, J.M., Edwards, T.J., Mehl, J.B. and Davis, R.S.,
-1988. Measurement of the universal gas constant R using a spherical acoustic
-resonator. Physical review letters, 60(4), p.249.
-doi:10.1103/PhysRevLett.60.249</p>
-<p>Tsilingiris, P.T., 2008. Thermophysical and transport properties of humid air
-at temperature range between 0 and 100 C. Energy Conversion and Management,
-49(5), pp.1098-1110. doi:10.1016/j.enconman.2007.09.015</p>
-
+    <div id="splash-100" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.0">
+<a href="#splash-100" class="anchor"></a>splash 1.0.0</h1>
+<ul>
+<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
+<li>Wrapped the standalone code into an R package.</li>
+</ul>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
 
 
