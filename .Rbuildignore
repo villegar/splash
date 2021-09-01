@@ -3,7 +3,6 @@
 ^R\.ignore$
 ^README\.Rmd$
 ^LICENSE\.md$
-^inst/extdata$
 ^inst/images$
 ^inst/const
 ^\.github$
