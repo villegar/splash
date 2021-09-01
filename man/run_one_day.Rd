@@ -50,3 +50,32 @@ List with the following components:
 \description{
 Runs SPLASH at a single location for one day
 }
+\examples{
+soil <- run_one_day(lat = 37.7,
+                    elv = 142,
+                    n = 172,
+                    y = 2000,
+                    wn = 75,
+                    sf = 1,
+                    tc = 23,
+                    pn = 5)
+cat(sprintf("Soil moisture (run one day):\n"))
+cat(sprintf("  Ho: \%0.6f J/m2\n", soil$ho))
+cat(sprintf("  Hn: \%0.6f J/m2\n", soil$hn))
+cat(sprintf("  PPFD: \%0.6f mol/m2\n", soil$ppfd))
+cat(sprintf("  EET: \%0.6f mm/d\n", soil$eet))
+cat(sprintf("  PET: \%0.6f mm/d\n", soil$pet))
+cat(sprintf("  AET: \%0.6f mm/d\n", soil$aet))
+cat(sprintf("  Cn: \%0.6f mm/d\n", soil$cond))
+cat(sprintf("  Wn: \%0.6f mm\n", soil$wn))
+cat(sprintf("  RO: \%0.6f mm\n", soil$ro))
+}
+\references{
+Cramer, W. and Prentice, I.C., 1988. Simulation of regional soil moisture
+deficits on a European scale. Norsk Geografisk Tidsskrift - Norwegian Journal
+of Geography, 42(2-3), pp.149–151. doi:10.1080/00291958808552193
+
+Federer, C.A., 1982. Transpirational supply and demand: plant, soil, and
+atmospheric effects evaluated by simulation. Water Resources Research, 18(2),
+pp.355-362. doi:10.1029/WR018i002p00355
+}

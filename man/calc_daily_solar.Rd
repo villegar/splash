@@ -93,6 +93,33 @@ Returns a \code{list} object with the following variables:
 \description{
 This function calculates daily solar radiation fluxes.
 }
+\examples{
+solar <- splash::calc_daily_solar(lat = 37.7,
+                                  n = 172,
+                                  elv = 142,
+                                  y = 2000,
+                                  sf = 1,
+                                  tc = 23.0)
+cat(sprintf("Solar values:\n"))
+cat(sprintf("  kn: \%d\n", solar$kN))
+cat(sprintf("  nu: \%0.6f degrees\n", solar$nu_deg))
+cat(sprintf("  lambda: \%0.6f degrees\n", solar$lambda_deg))
+cat(sprintf("  rho: \%0.6f\n", solar$rho))
+cat(sprintf("  dr: \%0.6f\n", solar$dr))
+cat(sprintf("  delta: \%0.6f degrees\n", solar$delta_deg))
+cat(sprintf("  ru: \%0.6f\n", solar$ru))
+cat(sprintf("  rv: \%0.6f\n", solar$rv))
+cat(sprintf("  rw: \%0.6f\n", solar$rw))
+cat(sprintf("  hs: \%0.6f degrees\n", solar$hs_deg))
+cat(sprintf("  hn: \%0.6f degrees\n", solar$hn_deg))
+cat(sprintf("  tau_o: \%0.6f\n", solar$tau_o))
+cat(sprintf("  tau: \%0.6f\n", solar$tau))
+cat(sprintf("  Qn: \%0.6f mol/m^2\n", solar$ppfd_mol.m2))
+cat(sprintf("  Rnl: \%0.6f w/m^2\n", solar$rnl_w.m2))
+cat(sprintf("  Ho: \%0.6f MJ/m^2\n", (1.0e-6) * solar$ra_j.m2))
+cat(sprintf("  Hn: \%0.6f MJ/m^2\n", (1.0e-6) * solar$rn_j.m2))
+cat(sprintf("  Hnn: \%0.6f MJ/m^2\n", (1.0e-6) * solar$rnn_j.m2))
+}
 \references{
 Berger, A.L., 1978. Long-term variations of daily insolation and Quaternary
 climatic changes. Journal of Atmospheric Sciences, 35(12), pp.2362-2367.

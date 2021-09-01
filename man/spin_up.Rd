@@ -35,3 +35,18 @@ The list with daily totals, \code{dtot}, should have the following component:
 \item wm ............ list, daily soil moisture (mm)
 }
 }
+\examples{
+daily_totals <- matrix(data = rep(0, 366), nrow = 366, ncol = 1)
+daily_totals <- as.data.frame(daily_totals)
+names(daily_totals) <- c("wn")
+my_file <- system.file("extdata/example_data.csv", package = "splash")
+my_data <- splash::read_csv(my_file, 2000)
+my_data$lat_deg <- 37.7
+my_data$elv_m <- 142
+daily_totals <- splash::spin_up(my_data, daily_totals)
+cat(sprintf("Spin-Up:\n"))
+for (i in seq(from = 1, to = my_data$num_lines, by = 1)) {
+  if (i == 1) cat(sprintf("Day\tWn (mm)\n"))
+  cat(sprintf("\%d\t\%0.6f\n", i, daily_totals$wn[i]))
+}
+}

@@ -76,6 +76,28 @@ Returns a \code{list} object with the following variables:
 This function calculates daily radiation, condensation, and evaporation
 fluxes.
 }
+\examples{
+evap <- splash::calc_daily_evap(lat = 37.7,
+                                n = 172,
+                                elv = 142,
+                                y = 2000,
+                                sf = 1,
+                                tc = 23.0,
+                                sw = 0.9)
+cat(sprintf("Evaporation values:\n"))
+cat(sprintf("  s: \%0.6f Pa/K\n", evap$s_pa.k))
+cat(sprintf("  Lv: \%0.6f MJ/kg\n", (1e-6) * evap$lv_j.kg))
+cat(sprintf("  Patm: \%0.6f bar\n", (1e-5) * evap$patm_pa))
+cat(sprintf("  pw: \%0.6f kg/m^3\n", evap$pw_kg.m3))
+cat(sprintf("  gamma: \%0.6f Pa/K\n", evap$gam_pa.k))
+cat(sprintf("  Econ: \%0.6f mm^3/J\n", (1e9) * evap$econ_m3.j))
+cat(sprintf("  Cn: \%0.6f mm\n", evap$cond_mm))
+cat(sprintf("  rx: \%0.6f\n", evap$rx))
+cat(sprintf("  hi: \%0.6f degrees\n", evap$hi_deg))
+cat(sprintf("  EET: \%0.6f mm\n", evap$eet_mm))
+cat(sprintf("  PET: \%0.6f mm\n", evap$pet_mm))
+cat(sprintf("  AET: \%0.6f mm\n", evap$aet_mm))
+}
 \references{
 Berger, A.L., 1978. Long-term variations of daily insolation and Quaternary
 climatic changes. Journal of Atmospheric Sciences, 35(12), pp.2362-2367.
