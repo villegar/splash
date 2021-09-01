@@ -449,6 +449,28 @@ sat_slope <- function(tc) {
 #' Priestley, C.H.B. and Taylor, R.J., 1972. On the assessment of surface heat
 #' flux and evaporation using large-scale parameters. Monthly weather review,
 #' 100(2), pp.81-92. doi:10.1175/1520-0493(1972)100<0081:OTAOSH>2.3.CO;2
+#'
+#' @examples
+#' evap <- splash::calc_daily_evap(lat = 37.7,
+#'                                 n = 172,
+#'                                 elv = 142,
+#'                                 y = 2000,
+#'                                 sf = 1,
+#'                                 tc = 23.0,
+#'                                 sw = 0.9)
+#' cat(sprintf("Evaporation values:\n"))
+#' cat(sprintf("  s: %0.6f Pa/K\n", evap$s_pa.k))
+#' cat(sprintf("  Lv: %0.6f MJ/kg\n", (1e-6) * evap$lv_j.kg))
+#' cat(sprintf("  Patm: %0.6f bar\n", (1e-5) * evap$patm_pa))
+#' cat(sprintf("  pw: %0.6f kg/m^3\n", evap$pw_kg.m3))
+#' cat(sprintf("  gamma: %0.6f Pa/K\n", evap$gam_pa.k))
+#' cat(sprintf("  Econ: %0.6f mm^3/J\n", (1e9) * evap$econ_m3.j))
+#' cat(sprintf("  Cn: %0.6f mm\n", evap$cond_mm))
+#' cat(sprintf("  rx: %0.6f\n", evap$rx))
+#' cat(sprintf("  hi: %0.6f degrees\n", evap$hi_deg))
+#' cat(sprintf("  EET: %0.6f mm\n", evap$eet_mm))
+#' cat(sprintf("  PET: %0.6f mm\n", evap$pet_mm))
+#' cat(sprintf("  AET: %0.6f mm\n", evap$aet_mm))
 calc_daily_evap <-function(lat,
                            n,
                            elv = 0,

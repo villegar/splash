@@ -97,6 +97,21 @@
 #'
 #' @return list, daily totals
 #' @export
+#'
+#' @examples
+#' daily_totals <- matrix(data = rep(0, 366), nrow = 366, ncol = 1)
+#' daily_totals <- as.data.frame(daily_totals)
+#' names(daily_totals) <- c("wn")
+#' my_file <- system.file("extdata/example_data.csv", package = "splash")
+#' my_data <- splash::read_csv(my_file, 2000)
+#' my_data$lat_deg <- 37.7
+#' my_data$elv_m <- 142
+#' daily_totals <- splash::spin_up(my_data, daily_totals)
+#' cat(sprintf("Spin-Up:\n"))
+#' for (i in seq(from = 1, to = my_data$num_lines, by = 1)) {
+#'   if (i == 1) cat(sprintf("Day\tWn (mm)\n"))
+#'   cat(sprintf("%d\t%0.6f\n", i, daily_totals$wn[i]))
+#' }
 spin_up <- function(mdat, dtot) {
   # Run one year:
   for (i in seq(from = 1, to = mdat$num_lines, by = 1)) {
@@ -260,6 +275,26 @@ quick_run <- function(lat, elv, n, y, wn, sf, tc, pn, kCw = 1.05, kWm = 150) {
 #' }
 #'
 #' @export
+#'
+#' @examples
+#' soil <- run_one_day(lat = 37.7,
+#'                     elv = 142,
+#'                     n = 172,
+#'                     y = 2000,
+#'                     wn = 75,
+#'                     sf = 1,
+#'                     tc = 23,
+#'                     pn = 5)
+#' cat(sprintf("Soil moisture (run one day):\n"))
+#' cat(sprintf("  Ho: %0.6f J/m2\n", soil$ho))
+#' cat(sprintf("  Hn: %0.6f J/m2\n", soil$hn))
+#' cat(sprintf("  PPFD: %0.6f mol/m2\n", soil$ppfd))
+#' cat(sprintf("  EET: %0.6f mm/d\n", soil$eet))
+#' cat(sprintf("  PET: %0.6f mm/d\n", soil$pet))
+#' cat(sprintf("  AET: %0.6f mm/d\n", soil$aet))
+#' cat(sprintf("  Cn: %0.6f mm/d\n", soil$cond))
+#' cat(sprintf("  Wn: %0.6f mm\n", soil$wn))
+#' cat(sprintf("  RO: %0.6f mm\n", soil$ro))
 run_one_day <- function(lat, elv, n, y, wn, sf, tc, pn, kCw = 1.05, kWm = 150) {
   # Return values
   rvals <- list()
