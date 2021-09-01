@@ -11,7 +11,7 @@ This program calculates bioclimatic indices and fluxes (radiation,
     species distribution, and vegetation dynamics under changing climate 
     scenarios. Predictions are based on a minimum of required inputs: latitude, 
     precipitation, air temperature, and cloudiness. 
-    Davis et al. (2017) <doi:10.5194/gmd-10-689-2017>
+    Davis et al. (2017) <doi:10.5194/gmd-10-689-2017>.
 }
 \seealso{
 Useful links:
