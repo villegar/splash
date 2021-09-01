@@ -276,6 +276,15 @@ quick_run <- function(lat, elv, n, y, wn, sf, tc, pn, kCw = 1.05, kWm = 150) {
 #'
 #' @export
 #'
+#' @references
+#' Cramer, W. and Prentice, I.C., 1988. Simulation of regional soil moisture
+#' deficits on a European scale. Norsk Geografisk Tidsskrift - Norwegian Journal
+#' of Geography, 42(2-3), pp.149–151. doi:10.1080/00291958808552193
+#'
+#' Federer, C.A., 1982. Transpirational supply and demand: plant, soil, and
+#' atmospheric effects evaluated by simulation. Water Resources Research, 18(2),
+#' pp.355-362. doi:10.1029/WR018i002p00355
+#'
 #' @examples
 #' soil <- run_one_day(lat = 37.7,
 #'                     elv = 142,
