@@ -76,7 +76,7 @@
 #' Calculate daily totals updating the soil moisture until equilibrium.
 #'
 #' @details The list with meteorological data, \code{mdat}, should have the
-#' following fields:
+#' following components:
 #' \itemize{
 #'  \item num_lines ..... double, length of meteorol. variable lists
 #'  \item lat_deg ....... double latitude (degrees)
@@ -87,7 +87,7 @@
 #'  \item pn ............ list, precipitation (mm/d)
 #' }
 #'
-#' The list with daily totals, \code{dtot}, should have the following field:
+#' The list with daily totals, \code{dtot}, should have the following component:
 #' \itemize{
 #'  \item wm ............ list, daily soil moisture (mm)
 #' }
@@ -169,15 +169,26 @@ spin_up <- function(mdat, dtot) {
 #' Calculate daily soil moisture and runoff
 #'
 #' @inheritParams calc_daily_evap
-#' @param pn double,
-#' @param kCw double,
-#' @param kWm double,
+#' @param pn double, daily precipitation, mm/day.
+#' @param kCw double, supply constant, mm/hr.
+#'     Default: \eqn{1.05} (Federer, 1982)
+#' @param kWm double, soil moisture capacity, mm.
+#'     Default: \eqn{150} (Cramer-Prentice, 1988)
 #'
-#' @return
+#' @return Returns daily soil moisture and runoff.
 #' @keywords internal
+#'
+#' @references
+#' Cramer, W. and Prentice, I.C., 1988. Simulation of regional soil moisture
+#' deficits on a European scale. Norsk Geografisk Tidsskrift - Norwegian Journal
+#' of Geography, 42(2-3), pp.149–151. doi:10.1080/00291958808552193
+#'
+#' Federer, C.A., 1982. Transpirational supply and demand: plant, soil, and
+#' atmospheric effects evaluated by simulation. Water Resources Research, 18(2),
+#' pp.355-362. doi:10.1029/WR018i002p00355
 quick_run <- function(lat, elv, n, y, wn, sf, tc, pn, kCw = 1.05, kWm = 150) {
   # Calculate evaporative supply (mm/hr)
-  sw <- kCw*wn/kWm
+  sw <- kCw * wn / kWm
 
   # Compute daily radiation and evaporations values:
   ET <- calc_daily_evap(lat, n, elv, y, sf, tc, sw)
@@ -230,21 +241,25 @@ quick_run <- function(lat, elv, n, y, wn, sf, tc, pn, kCw = 1.05, kWm = 150) {
 # Features: Runs SPLASH at a single location for one day.
 # Depends:  evap
 # ************************************************************************
-#' Title
+#' Runs SPLASH at a single location for one day
 #'
-#' @param lat
-#' @param elv
-#' @param n
-#' @param y
-#' @param wn
-#' @param sf
-#' @param tc
-#' @param pn
+#' @param wn double, daily soil moisture content, mm (wn).
+#' @inheritParams quick_run
 #'
-#' @return
+#' @return List with the following components:
+#' \itemize{
+#'  \item ho .......... daily solar irradiation, J/m2
+#'  \item hn .......... daily net radiation, J/m2
+#'  \item ppfd ........ daily PPFD, mol/m2
+#'  \item cond ........ daily condensation water, mm
+#'  \item eet ......... daily equilibrium ET, mm
+#'  \item pet ......... daily potential ET, mm
+#'  \item aet ......... daily actual ET, mm
+#'  \item wn .......... daily soil moisture, mm
+#'  \item ro .......... daily runoff, mm
+#' }
+#'
 #' @export
-#'
-#' @examples
 run_one_day <- function(lat, elv, n, y, wn, sf, tc, pn, kCw = 1.05, kWm = 150) {
   # Return values
   rvals <- list()
