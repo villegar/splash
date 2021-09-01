@@ -11,16 +11,16 @@ berger_tls(n, N, ke = 0.0167, keps = 23.44, komega = 283, pir = pi/180)
 
 \item{N}{Numeric, days in a year.}
 
-\item{ke}{Numeric, eccentricity of Earth's orbit.
-Default: 0.01670, 2000CE (Berger, 1978).}
+\item{ke}{double, eccentricity of earth's orbit.
+Default: \eqn{0.01670}, 2000CE (Berger, 1978).}
 
-\item{keps}{Numeric, obliquity of Earth's elliptic.
-Default: 23.44, 2000CE (Berger, 1978).}
+\item{keps}{double, obliquity of earth's elliptic.
+Default: \eqn{23.44}, 2000CE (Berger, 1978).}
 
-\item{komega}{Numeric, longitude of the perihelion, degrees.
-Default: 283, 2000CE (Berger, 1978).}
+\item{komega}{double, lon. of perihelion, degrees
+Default: \eqn{283}, 2000CE (Berger, 1978).}
 
-\item{pir}{\eqn{\pi} (\eqn{~} 0.017453) in radians.}
+\item{pir}{\eqn{\pi} (\eqn{~ 0.017453}) in radians.}
 }
 \value{
 True anomaly and true longitude for a given day.

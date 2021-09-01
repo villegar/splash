@@ -4,12 +4,18 @@
 \alias{psychro}
 \title{Calculate psychrometric constant}
 \usage{
-psychro(tc, pa)
+psychro(tc, pa, kMa = 0.028963, KMv = 0.01802)
 }
 \arguments{
 \item{tc}{double, air temperature, degrees C.}
 
 \item{pa}{double, atm pressure, Pa.}
+
+\item{kMa}{double, molecular weight of dry air, kg/mol.
+Default: \eqn{0.028963} (Tsilingiris, 2008)}
+
+\item{kMv}{double, molecular weight of water vapor, kg/mol.
+Default: \eqn{0.01802} (Tsilingiris, 2008)}
 }
 \value{
 double, Pa/K.

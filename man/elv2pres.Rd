@@ -18,22 +18,22 @@ elv2pres(
 \item{z}{Elevation, m.}
 
 \item{kG}{Gravitational acceleration, m/s^2.
-Default: 9.80665 (Allen, 1973)}
+Default: \eqn{9.80665} (Allen, 1973)}
 
 \item{kL}{Adiabatic lapse rate, K/m.
-Default: 0.0065 (Allen, 1973)}
+Default: \eqn{0.0065} (Allen, 1973)}
 
 \item{kMa}{Molecular weight of dry air, kg/mol.
-Default: 0.028963 (Tsilingiris, 2008)}
+Default: \eqn{0.028963} (Tsilingiris, 2008)}
 
 \item{kPo}{Standard atmosphere, Pa.
-Default: 101325 (Allen, 1973)}
+Default: \eqn{101325} (Allen, 1973)}
 
 \item{kR}{Universal gas constant, J/mol/K.
-Default: 8.31447 (Moldover et al., 1988)}
+Default: \eqn{8.31447} (Moldover et al., 1988)}
 
 \item{kTo}{Base temperature, K.
-Default: 288.15 (Berberan-Santos et al., 1997)}
+Default: \eqn{288.15} (Berberan-Santos et al., 1997)}
 }
 \value{
 Atmospheric pressure for the given elevation, Pa.

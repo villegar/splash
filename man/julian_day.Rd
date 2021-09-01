@@ -29,5 +29,5 @@ the Julian calendar!)
 }
 \references{
 Meeus, J. 1991. Chapter 7 "Julian Day". Astronomical Algorithms.
-Willmann-Bell, Incorporated.
+Willmann-Bell.
 }

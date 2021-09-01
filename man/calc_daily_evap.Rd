@@ -23,28 +23,32 @@ calc_daily_evap(
 
 \item{n}{double, day of year.}
 
-\item{elv}{double, elevation, m A.S.L. Default: \code{0}.}
+\item{elv}{double, elevation, m A.S.L.
+Default: \eqn{0}.}
 
-\item{y}{double, year. Default: \code{0}.}
+\item{y}{double, year.
+Default: \eqn{0}.}
 
-\item{sf}{double, fraction of sunshine hours. Default: \code{1}.}
+\item{sf}{double, fraction of sunshine hours.
+Default: \eqn{1}.}
 
 \item{tc}{double, mean daily air temperature, degrees C.
-Default: \code{23.0}.}
+Default: \eqn{23.0}.}
 
-\item{sw}{double, evaporative supply rate, mm/hr. Default: \code{1.0}.}
+\item{sw}{double, evaporative supply rate, mm/hr.
+Default: \eqn{1.0}.}
 
-\item{ke}{double, eccentricity of earth's orbit, 2000CE (Berger, 1978).
-Default: \code{0.01670}.}
+\item{ke}{double, eccentricity of earth's orbit.
+Default: \eqn{0.01670}, 2000CE (Berger, 1978).}
 
-\item{keps}{double, obliquity of earth's elliptic, 2000CE (Berger, 1978).
-Default: \code{23.44}.}
+\item{keps}{double, obliquity of earth's elliptic.
+Default: \eqn{23.44}, 2000CE (Berger, 1978).}
 
-\item{komega}{double, lon. of perihelion, degrees, 2000CE (Berger, 1978).
-Default: \code{283}}
+\item{komega}{double, lon. of perihelion, degrees
+Default: \eqn{283}, 2000CE (Berger, 1978).}
 
 \item{kw}{double, PET entrainment, \eqn{(1 + kw) * EET}
-(Priestley-Taylor, 1972). Default: \code{0.26}.}
+Default: \eqn{0.26} (Priestley-Taylor, 1972)}
 }
 \value{
 Returns a \code{list} object with the following variables:

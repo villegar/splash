@@ -14,6 +14,7 @@ calc_daily_solar(
   ke = 0.0167,
   keps = 23.44,
   komega = 283,
+  kA = 107,
   kalb_sw = 0.17,
   kalb_vis = 0.03,
   kb = 0.2,
@@ -28,38 +29,50 @@ calc_daily_solar(
 
 \item{n}{double, day of year.}
 
-\item{elv}{double, elevation, m A.S.L. Default: \code{0}.}
+\item{elv}{double, elevation, m A.S.L.
+Default: \eqn{0}.}
 
-\item{y}{double, year. Default: \code{0}.}
+\item{y}{double, year.
+Default: \eqn{0}.}
 
-\item{sf}{double, fraction of sunshine hours. Default: \code{1}.}
+\item{sf}{double, fraction of sunshine hours.
+Default: \eqn{1}.}
 
 \item{tc}{double, mean daily air temperature, degrees C.
-Default: \code{23.0}.}
+Default: \eqn{23.0}.}
 
-\item{ke}{double, eccentricity of earth's orbit, 2000CE (Berger, 1978).
-Default: \code{0.01670}.}
+\item{ke}{double, eccentricity of earth's orbit.
+Default: \eqn{0.01670}, 2000CE (Berger, 1978).}
 
-\item{keps}{double, obliquity of earth's elliptic, 2000CE (Berger, 1978).
-Default: \code{23.44}.}
+\item{keps}{double, obliquity of earth's elliptic.
+Default: \eqn{23.44}, 2000CE (Berger, 1978).}
 
-\item{komega}{double, lon. of perihelion, degrees, 2000CE (Berger, 1978).
-Default: \code{283}}
+\item{komega}{double, lon. of perihelion, degrees
+Default: \eqn{283}, 2000CE (Berger, 1978).}
 
-\item{kalb_sw}{double, shortwave albedo, Eq. (10) (Federer, 1968).}
+\item{kA}{double, empirical constant, degrees Celsius.
+Default: \eqn{107} (Monteith and Unsworth, 1990).}
 
-\item{kalb_vis}{double, visible light albedo, Eq. (17) (Sellers, 1985).}
+\item{kalb_sw}{double, shortwave albedo.
+Default: \eqn{0.17} (Federer, 1968).}
 
-\item{kb}{double, empirical constant, Eq. (13) (Linacre, 1968).}
+\item{kalb_vis}{double, visible light albedo.
+Default: \eqn{0.03} (Sellers, 1985).}
 
-\item{kc}{double, cloudy transmittivity, Eq. (12) (Linacre, 1968).}
+\item{kb}{double, empirical constant.
+Default: \eqn{0.20} (Linacre, 1968).}
 
-\item{kd}{double, angular coefficient of transmittivity, Eq. (12)
-(Linacre, 1968).}
+\item{kc}{double, cloudy transmittivity.
+Default: \eqn{0.25} (Linacre, 1968).}
 
-\item{kfFEC}{double, flux-to-energy conversion, Eq. (17) (Meek et al., 1984).}
+\item{kd}{double, angular coefficient of transmittivity.
+Default: \eqn{0.50} (Linacre, 1968).}
 
-\item{kGsc}{double, solar constant, Eq. (2) (Kopp and Lean, 2011).}
+\item{kfFEC}{double, flux-to-energy conversion, umol/J.
+Default: \eqn{2.04} (Meek et al., 1984).}
+
+\item{kGsc}{double, solar constant, W/m^2.
+Default: \eqn{1360.8} (Kopp and Lean, 2011).}
 }
 \value{
 Returns a \code{list} object with the following variables:
@@ -100,6 +113,9 @@ Meek, D.W., Hatfield, J.L., Howell, T.A., Idso, S.B. and Reginato, R.J.,
 1984. A generalized relationship between photosynthetically active radiation
 and solar radiation 1. Agronomy journal, 76(6), pp.939-945.
 doi:10.2134/agronj1984.00021962007600060018x
+
+Monteith, J., and Unsworth, M., 1990. Principles of Environmental Physics,
+Butterworth-Heinemann, Oxford.
 
 Sellers, P.J., 1985. Canopy reflectance, photosynthesis and transpiration,
 International Journal of Remote Sensing, 6:8, 1335-1372,
