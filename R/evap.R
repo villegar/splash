@@ -268,7 +268,7 @@ enthalpy_vap <- function(tc) {
 #' Irrigation and drainage paper 56. Food and Agriculture Organization of the
 #' United Nations, Rome, 300(9), p.D05109. Available:
 #' http://www.fao.org/docrep/x0490e/x0490e07.htm
-psychro <- function(tc, pa, kMa = 0.028963, KMv = 0.01802) {
+psychro <- function(tc, pa, kMa = 0.028963, kMv = 0.01802) {
   # Calculate the specific heat capacity of water, J/kg/K
   cp <- specific_heat(tc)
 
