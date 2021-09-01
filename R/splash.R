@@ -71,17 +71,48 @@
 # Features: Updates the soil moisture in daily totals until equilibrium
 # Depends:  quick_run
 # ************************************************************************
+#' Calculate daily totals
+#'
+#' Calculate daily totals updating the soil moisture until equilibrium.
+#'
+#' @details The list with meteorological data, \code{mdat}, should have the
+#' following fields:
+#' \itemize{
+#'  \item num_lines ..... double, length of meteorol. variable lists
+#'  \item lat_deg ....... double latitude (degrees)
+#'  \item elv_m ......... double, elevation (m)
+#'  \item year .......... double, year
+#'  \item sf ............ list, fraction of sunshine hours
+#'  \item tair .......... list, mean daily air temperature (deg. C)
+#'  \item pn ............ list, precipitation (mm/d)
+#' }
+#'
+#' The list with daily totals, \code{dtot}, should have the following field:
+#' \itemize{
+#'  \item wm ............ list, daily soil moisture (mm)
+#' }
+#'
+#' @param mdat list with meteorological data (see the details section).
+#' @param dtot list with daily totals (see the details section).
+#'
+#' @return list, daily totals
 #' @export
 spin_up <- function(mdat, dtot) {
   # Run one year:
-  for (i in seq(from=1, to=mdat$num_lines, by=1)) {
+  for (i in seq(from = 1, to = mdat$num_lines, by = 1)) {
     if (i == 1) {
       wn <- dtot$wn[mdat$num_lines]
     } else {
       wn <- dtot$wn[i - 1]
     }
-    my_vals <- quick_run(mdat$lat_deg, mdat$elv_m, i, mdat$year, wn,
-                         mdat$sf[i], mdat$tair[i], mdat$pn[i])
+    my_vals <- quick_run(mdat$lat_deg,
+                         mdat$elv_m,
+                         i,
+                         mdat$year,
+                         wn,
+                         mdat$sf[i],
+                         mdat$tair[i],
+                         mdat$pn[i])
     dtot$wn[i] <- my_vals$sm
   }
 
@@ -95,7 +126,7 @@ spin_up <- function(mdat, dtot) {
   # Equilibrate:
   spin_count <- 1
   while (diff_sm > 1.0) {
-    for (i in seq(from=1, to=mdat$num_lines, by=1)) {
+    for (i in seq(from = 1, to = mdat$num_lines, by = 1)) {
       if (i == 1) {
         wn <- dtot$wn[mdat$num_lines]
       } else {
@@ -135,8 +166,16 @@ spin_up <- function(mdat, dtot) {
 # Features: Returns daily soil moisture and runoff
 # Depends:  evap
 # ************************************************************************
-#' @export
-quick_run <- function(lat, elv, n, y, wn, sf, tc, pn) {
+#' Calculate daily soil moisture and runoff
+#'
+#' @inheritParams calc_daily_evap
+#' @param pn double,
+#' @param kCw double,
+#' @param kWm double,
+#'
+#' @return
+#' @keywords internal
+quick_run <- function(lat, elv, n, y, wn, sf, tc, pn, kCw = 1.05, kWm = 150) {
   # Calculate evaporative supply (mm/hr)
   sw <- kCw*wn/kWm
 
@@ -191,8 +230,22 @@ quick_run <- function(lat, elv, n, y, wn, sf, tc, pn) {
 # Features: Runs SPLASH at a single location for one day.
 # Depends:  evap
 # ************************************************************************
+#' Title
+#'
+#' @param lat
+#' @param elv
+#' @param n
+#' @param y
+#' @param wn
+#' @param sf
+#' @param tc
+#' @param pn
+#'
+#' @return
 #' @export
-run_one_day <- function(lat, elv, n, y, wn, sf, tc, pn) {
+#'
+#' @examples
+run_one_day <- function(lat, elv, n, y, wn, sf, tc, pn, kCw = 1.05, kWm = 150) {
   # Return values
   rvals <- list()
 
