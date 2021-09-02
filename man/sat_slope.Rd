@@ -26,6 +26,6 @@ http://www.fao.org/docrep/x0490e/x0490e07.htm
 
 Prentice, I.C., Sykes, M.T. and Cramer, W., 1993. A simulation model for the
 transient effects of climate change on forest landscapes. Ecological
-modelling, 65(1-2), pp.51-70. doi:10.1016/0304-3800(93)90126-D
+modelling, 65(1-2), pp.51-70. \doi{10.1016/0304-3800(93)90126-D}
 }
 \keyword{internal}

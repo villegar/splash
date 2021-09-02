@@ -101,9 +101,9 @@ cat(sprintf("  AET: \%0.6f mm\n", evap$aet_mm))
 \references{
 Berger, A.L., 1978. Long-term variations of daily insolation and Quaternary
 climatic changes. Journal of Atmospheric Sciences, 35(12), pp.2362-2367.
-doi:10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2
+\doi{10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2}
 
 Priestley, C.H.B. and Taylor, R.J., 1972. On the assessment of surface heat
 flux and evaporation using large-scale parameters. Monthly weather review,
-100(2), pp.81-92. doi:10.1175/1520-0493(1972)100<0081:OTAOSH>2.3.CO;2
+100(2), pp.81-92. \doi{10.1175/1520-0493(1972)100<0081:OTAOSH>2.3.CO;2}
 }

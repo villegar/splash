@@ -17,7 +17,7 @@ This program calculates bioclimatic indices and fluxes (radiation,
 Useful links:
 \itemize{
   \item \url{https://github.com/villegar/splash/}
-  \item \url{https://villegar.github.io/splash/}
+  \item \url{https://splash.robertovillegas-diaz.com/}
   \item \url{https://bitbucket.org/labprentice/splash/}
   \item Report bugs at \url{https://github.com/villegar/splash/issues/}
 }

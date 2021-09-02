@@ -20,6 +20,6 @@ This function calculates the temperature-dependent enthalpy of vaporization
 Eq. 8, Henderson‐Sellers, B., 1984. A new formula for latent heat of
 vaporization of water as a function of temperature. Quarterly Journal of the
 Royal Meteorological Society, 110(466), pp.1186-1190.
-doi:10.1002/qj.49711046626
+\doi{10.1002/qj.49711046626}
 }
 \keyword{internal}

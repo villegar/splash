@@ -31,6 +31,6 @@ Calculate true anomaly and true longitude
 \references{
 Berger, A.L., 1978. Long-term variations of daily insolation and Quaternary
 climatic changes. Journal of Atmospheric Sciences, 35(12), pp.2362-2367.
-doi: 10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2
+\doi{10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2}
 }
 \keyword{internal}

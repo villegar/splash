@@ -18,6 +18,6 @@ This function calculates the specific heat of moist air.
 \references{
 Tsilingiris, P.T., 2008. Thermophysical and transport properties of humid air
 at temperature range between 0 and 100 C. Energy Conversion and Management,
-49(5), pp.1098-1110. doi:10.1016/j.enconman.2007.09.015
+49(5), pp.1098-1110. \doi{10.1016/j.enconman.2007.09.015}
 }
 \keyword{internal}

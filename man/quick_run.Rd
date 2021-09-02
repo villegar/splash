@@ -40,10 +40,10 @@ Calculate daily soil moisture and runoff
 \references{
 Cramer, W. and Prentice, I.C., 1988. Simulation of regional soil moisture
 deficits on a European scale. Norsk Geografisk Tidsskrift - Norwegian Journal
-of Geography, 42(2-3), pp.149–151. doi:10.1080/00291958808552193
+of Geography, 42(2-3), pp.149–151. \doi{10.1080/00291958808552193}
 
 Federer, C.A., 1982. Transpirational supply and demand: plant, soil, and
 atmospheric effects evaluated by simulation. Water Resources Research, 18(2),
-pp.355-362. doi:10.1029/WR018i002p00355
+pp.355-362. \doi{10.1029/WR018i002p00355}
 }
 \keyword{internal}

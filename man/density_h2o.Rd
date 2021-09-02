@@ -21,6 +21,6 @@ pure water.
 \references{
 Chen, C.T., Fine, R.A. and Millero, F.J., 1977. The equation of state of
 pure water determined from sound speeds. The Journal of Chemical Physics,
-66(5), pp.2142-2144. doi:10.1063/1.434179
+66(5), pp.2142-2144. \doi{10.1063/1.434179}
 }
 \keyword{internal}

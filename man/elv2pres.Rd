@@ -50,15 +50,15 @@ http://www.fao.org/docrep/x0490e/x0490e07.htm
 
 Berberan-Santos, M.N., Bodunov, E.N. and Pogliani, L., 1997. On the
 barometric formula. American Journal of Physics, 65(5), pp.404-412.
-doi:10.1119/1.18555
+\doi{10.1119/1.18555}
 
 Moldover, M.R., Trusler, J.M., Edwards, T.J., Mehl, J.B. and Davis, R.S.,
 1988. Measurement of the universal gas constant R using a spherical acoustic
 resonator. Physical review letters, 60(4), p.249.
-doi:10.1103/PhysRevLett.60.249
+\doi{10.1103/PhysRevLett.60.249}
 
 Tsilingiris, P.T., 2008. Thermophysical and transport properties of humid air
 at temperature range between 0 and 100 C. Energy Conversion and Management,
-49(5), pp.1098-1110. doi:10.1016/j.enconman.2007.09.015
+49(5), pp.1098-1110. \doi{10.1016/j.enconman.2007.09.015}
 }
 \keyword{internal}
