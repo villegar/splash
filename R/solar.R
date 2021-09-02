@@ -84,7 +84,7 @@
 #' @references
 #' Berger, A.L., 1978. Long-term variations of daily insolation and Quaternary
 #' climatic changes. Journal of Atmospheric Sciences, 35(12), pp.2362-2367.
-#' doi: 10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2
+#' \doi{10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2}
 berger_tls <- function(n,
                        N,
                        ke = 0.01670,
@@ -261,30 +261,30 @@ dsin <- function(d, pir = pi / 180) {
 #' @references
 #' Berger, A.L., 1978. Long-term variations of daily insolation and Quaternary
 #' climatic changes. Journal of Atmospheric Sciences, 35(12), pp.2362-2367.
-#' doi:10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2
+#' \doi{10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2}
 #'
 #' Federer, C.A., 1968. Spatial variation of net radiation, albedo and surface
 #' temperature of forests. Journal of Applied Meteorology and Climatology, 7(5),
-#' pp.789-795. doi:10.1175/1520-0450(1968)007<0789:SVONRA>2.0.CO;2
+#' pp.789-795. \doi{10.1175/1520-0450(1968)007<0789:SVONRA>2.0.CO;2}
 #'
 #' Kopp, G. and Lean, J.L., 2011. A new, lower value of total solar irradiance:
 #' Evidence and climate significance. Geophys. Res. Lett. 38, L01706.
-#' doi:10.1029/2010GL045777
+#' \doi{10.1029/2010GL045777}
 #'
 #' Linacre, E.T., 1968. Estimating the net-radiation flux. Agricultural
-#' meteorology, 5(1), pp.49-63. doi:10.1016/0002-1571(68)90022-8
+#' meteorology, 5(1), pp.49-63. \doi{10.1016/0002-1571(68)90022-8}
 #'
 #' Meek, D.W., Hatfield, J.L., Howell, T.A., Idso, S.B. and Reginato, R.J.,
 #' 1984. A generalized relationship between photosynthetically active radiation
 #' and solar radiation 1. Agronomy journal, 76(6), pp.939-945.
-#' doi:10.2134/agronj1984.00021962007600060018x
+#' \doi{10.2134/agronj1984.00021962007600060018x}
 #'
 #' Monteith, J., and Unsworth, M., 1990. Principles of Environmental Physics,
 #' Butterworth-Heinemann, Oxford.
 #'
 #' Sellers, P.J., 1985. Canopy reflectance, photosynthesis and transpiration,
 #' International Journal of Remote Sensing, 6:8, 1335-1372,
-#' doi:10.1080/01431168508948283
+#' \doi{10.1080/01431168508948283}
 #'
 #' @examples
 #' solar <- splash::calc_daily_solar(lat = 37.7,

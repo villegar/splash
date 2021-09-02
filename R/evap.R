@@ -78,7 +78,7 @@
 # * Ref:    Chen, C.T., R.A. Fine, and F.J. Millero (1977), The equation
 #             of state of pure water determined from sound speeds, The
 #             Journal of Chemical Physics 66, 2142;
-#             doi:10.1063/1.434179
+#             \doi{10.1063/1.434179}
 # ************************************************************************
 #' Calculate density of water at 1 atm, g/cm^3
 #'
@@ -94,7 +94,7 @@
 #' @references
 #' Chen, C.T., Fine, R.A. and Millero, F.J., 1977. The equation of state of
 #' pure water determined from sound speeds. The Journal of Chemical Physics,
-#' 66(5), pp.2142-2144. doi:10.1063/1.434179
+#' 66(5), pp.2142-2144. \doi{10.1063/1.434179}
 density_h2o <- function(tc, pa) {
   # Calculate density of water at 1 atm, g/cm^3
   po <- 0.99983952 +
@@ -181,16 +181,16 @@ density_h2o <- function(tc, pa) {
 #'
 #' Berberan-Santos, M.N., Bodunov, E.N. and Pogliani, L., 1997. On the
 #' barometric formula. American Journal of Physics, 65(5), pp.404-412.
-#' doi:10.1119/1.18555
+#' \doi{10.1119/1.18555}
 #'
 #' Moldover, M.R., Trusler, J.M., Edwards, T.J., Mehl, J.B. and Davis, R.S.,
 #' 1988. Measurement of the universal gas constant R using a spherical acoustic
 #' resonator. Physical review letters, 60(4), p.249.
-#' doi:10.1103/PhysRevLett.60.249
+#' \doi{10.1103/PhysRevLett.60.249}
 #'
 #' Tsilingiris, P.T., 2008. Thermophysical and transport properties of humid air
 #' at temperature range between 0 and 100 C. Energy Conversion and Management,
-#' 49(5), pp.1098-1110. doi:10.1016/j.enconman.2007.09.015
+#' 49(5), pp.1098-1110. \doi{10.1016/j.enconman.2007.09.015}
 elv2pres <- function(z,
                      kG = 9.80665,
                      kL = 0.0065,
@@ -227,7 +227,7 @@ elv2pres <- function(z,
 #' Eq. 8, Henderson‐Sellers, B., 1984. A new formula for latent heat of
 #' vaporization of water as a function of temperature. Quarterly Journal of the
 #' Royal Meteorological Society, 110(466), pp.1186-1190.
-#' doi:10.1002/qj.49711046626
+#' \doi{10.1002/qj.49711046626}
 enthalpy_vap <- function(tc) {
   1.91846e6 * ((tc + 273.15) / (tc + 273.15 - 33.91)) ^ 2
 }
@@ -301,7 +301,7 @@ psychro <- function(tc, pa, kMa = 0.028963, kMv = 0.01802) {
 #' @references
 #' Tsilingiris, P.T., 2008. Thermophysical and transport properties of humid air
 #' at temperature range between 0 and 100 C. Energy Conversion and Management,
-#' 49(5), pp.1098-1110. doi:10.1016/j.enconman.2007.09.015
+#' 49(5), pp.1098-1110. \doi{10.1016/j.enconman.2007.09.015}
 specific_heat <- function(tc) {
   if (tc < 0) {
     tc <- 0
@@ -348,7 +348,7 @@ specific_heat <- function(tc) {
 #'
 #' Prentice, I.C., Sykes, M.T. and Cramer, W., 1993. A simulation model for the
 #' transient effects of climate change on forest landscapes. Ecological
-#' modelling, 65(1-2), pp.51-70. doi:10.1016/0304-3800(93)90126-D
+#' modelling, 65(1-2), pp.51-70. \doi{10.1016/0304-3800(93)90126-D}
 sat_slope <- function(tc) {
   (17.269) * (237.3) * (610.78) *
     exp(17.269 * tc / (237.3 + tc)) / (237.3 + tc) ^ 2
@@ -444,11 +444,11 @@ sat_slope <- function(tc) {
 #' @references
 #' Berger, A.L., 1978. Long-term variations of daily insolation and Quaternary
 #' climatic changes. Journal of Atmospheric Sciences, 35(12), pp.2362-2367.
-#' doi:10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2
+#' \doi{10.1175/1520-0469(1978)035<2362:LTVODI>2.0.CO;2}
 #'
 #' Priestley, C.H.B. and Taylor, R.J., 1972. On the assessment of surface heat
 #' flux and evaporation using large-scale parameters. Monthly weather review,
-#' 100(2), pp.81-92. doi:10.1175/1520-0493(1972)100<0081:OTAOSH>2.3.CO;2
+#' 100(2), pp.81-92. \doi{10.1175/1520-0493(1972)100<0081:OTAOSH>2.3.CO;2}
 #'
 #' @examples
 #' evap <- splash::calc_daily_evap(lat = 37.7,
