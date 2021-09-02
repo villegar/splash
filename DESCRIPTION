@@ -56,6 +56,6 @@ RoxygenNote: 7.1.1
 Depends: R (>= 3.2.3)
 Language: en-GB
 URL: https://github.com/villegar/splash/, 
-     https://villegar.github.io/splash/,
+     https://splash.robertovillegas-diaz.com/,
      https://bitbucket.org/labprentice/splash/
 BugReports: https://github.com/villegar/splash/issues/
