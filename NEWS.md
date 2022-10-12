@@ -1,3 +1,6 @@
+# splash 1.0.2
+* Update the contact information of the package maintainer 
+
 # splash 1.0.1
 * Update link to website with documentation: 
 https://villegar.github.io/splash -> https://splash.robertovillegas-diaz.com
