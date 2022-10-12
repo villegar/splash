@@ -4,8 +4,8 @@
 # SPLASH: Simple Process-Led Algorithms for Simulating Habitats <img src="https://raw.githubusercontent.com/villegar/splash/main/inst/images/logo.png" alt="logo" align="right" height=200px/>
 
 <!-- badges: start -->
+<!-- [![](https://img.shields.io/badge/devel%20version-1.0.2-yellow.svg)](https://github.com/villegar/splash) -->
 
-[![](https://img.shields.io/badge/devel%20version-1.0.0-yellow.svg)](https://github.com/villegar/splash)
 [![](https://www.r-pkg.org/badges/version/splash?color=black)](https://cran.r-project.org/package=splash)
 [![R build
 status](https://github.com/villegar/splash/workflows/R-CMD-check/badge.svg)](https://github.com/villegar/splash/actions)

@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # SPLASH: Simple Process-Led Algorithms for Simulating Habitats <img src="https://raw.githubusercontent.com/villegar/splash/main/inst/images/logo.png" alt="logo" align="right" height=200px/>
 
 <!-- badges: start -->
-`r badger::badge_devel("villegar/splash", "yellow")`
+<!-- `r badger::badge_devel("villegar/splash", "yellow")` -->
 `r badger::badge_cran_release("splash", "black")`
 `r badger::badge_github_actions("villegar/splash")`
 `r badger::badge_doi("10.5281/zenodo.376293", "blue")`
