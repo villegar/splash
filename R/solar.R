@@ -156,9 +156,9 @@ berger_tls <- function(n,
 #' @references
 #' C. Johnson, Theoretical Physicist, Univ of Chicago
 #'
-#' - 'Equation of Time' URL: \url{http://mb-soft.com/public3/equatime.html}
+#' - 'Equation of Time' URL: \url{https://mb-soft.com/public3/equatime.html}
 #'
-#' - Javascript URL: \url{http://mb-soft.com/believe/txx/astro22.js}
+#' - Javascript URL: \url{https://mb-soft.com/believe/txx/astro22.js}
 dcos <- function(d, pir = pi / 180) {
   cos(d * pir)
 }
