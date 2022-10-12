@@ -6,12 +6,7 @@
 \alias{splash-package}
 \title{splash: Simple Process-Led Algorithms for Simulating Habitats}
 \description{
-This program calculates bioclimatic indices and fluxes (radiation, 
-    evapotranspiration, soil moisture) for use in studies of ecosystem function, 
-    species distribution, and vegetation dynamics under changing climate 
-    scenarios. Predictions are based on a minimum of required inputs: latitude, 
-    precipitation, air temperature, and cloudiness. 
-    Davis et al. (2017) <doi:10.5194/gmd-10-689-2017>.
+This program calculates bioclimatic indices and fluxes (radiation, evapotranspiration, soil moisture) for use in studies of ecosystem function, species distribution, and vegetation dynamics under changing climate scenarios. Predictions are based on a minimum of required inputs: latitude, precipitation, air temperature, and cloudiness. Davis et al. (2017) \doi{10.5194/gmd-10-689-2017}.
 }
 \seealso{
 Useful links:
@@ -24,7 +19,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Roberto Villegas-Diaz \email{r.villegas-diaz@reading.ac.uk} (\href{https://orcid.org/0000-0001-5036-8661}{ORCID})
+\strong{Maintainer}: Roberto Villegas-Diaz \email{r.villegas-diaz@outlook.com} (\href{https://orcid.org/0000-0001-5036-8661}{ORCID})
 
 Authors:
 \itemize{
